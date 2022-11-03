@@ -22,6 +22,8 @@
 - 他の人のプレイした感想にも触れる事で、よりそのゲームを深く理解できるようにしたい時
 
 ## 設計書
+ER図
+https://drive.google.com/file/d/1G52rL6dNBDb0nuLTmAFMRWICo0eM0LWl/view?usp=sharing
 ER図・テーブル定義書・詳細設計を追記
 
 ## 開発環境
