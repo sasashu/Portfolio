@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
 
   namespace :admin do
     resources :users, only:[:index, :show, :edit, :update]
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
 
     resources :reviews, only:[:destroy]
     resources :comments, only:[:destroy]
+    get '/'=> 'homes#top'
+    
   end
 
   scope module: :public do
@@ -18,6 +21,13 @@ Rails.application.routes.draw do
     get 'users/confirm', as: 'confirm'
     patch 'users/withdraw', as: 'withdraw'
 
+
+    get 'games/pc', as: 'pc'
+    get 'games/ps', as: 'ps'
+    get 'games/switch', as: 'switch'
+    get 'games/portable', as: 'portable'
+    get 'games/smartphone', as: 'smartphone'
+
     resources :games, only:[:index, :show] do
       resources :reviews, only:[:new, :create, :destroy]
     end
@@ -26,21 +36,21 @@ Rails.application.routes.draw do
       resources :comments, only:[:new, :create, :destroy]
     end
 
-    get 'games/pc', as: 'pc'
-    get 'games/ps', as: 'ps'
-    get 'games/switch', as: 'switch'
-    get 'games/portable', as: 'portable'
-    get 'games/smartphone', as: 'smartphone'
-
-    get '/'=> 'homes#top'
+    root :to =>"homes#top"
     get 'about'=> 'homes#about', as: 'about'
   end
+  
   # 顧客用
   # URL /users/sign_in ...
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
+
 
   # 管理者用
   # URL /admin/sign_in ...
