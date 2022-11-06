@@ -1,43 +1,39 @@
 Rails.application.routes.draw do
-  
+
   namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
+    resources :users, only:[:index, :show, :edit, :update]
+
+    resources :tags, only:[:index, :create, :edit, :update, :destroy]
+
+    resources :games
+
+    resources :reviews, only:[:destroy]
+    resources :comments, only:[:destroy]
   end
-  namespace :admin do
-    get 'tags/index'
-    get 'tags/edit'
-  end
-  namespace :admin do
-    get 'games/index'
-    get 'games/new'
-    get 'games/show'
-    get 'games/edit'
-  end
-  namespace :public do
-    get 'users/show'
-    get 'users/edit'
-    get 'users/confirm'
-  end
-  namespace :public do
-    get 'comments/new'
-  end
-  namespace :public do
-    get 'reviews/new'
-  end
-  namespace :public do
-    get 'games/index'
-    get 'games/show'
-    get 'games/pc'
-    get 'games/ps'
-    get 'games/switch'
-    get 'games/portable'
-    get 'games/smartphone'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
+
+  scope module: :public do
+    get 'users/my_page' =>'users#show', as: 'my_page'
+    get 'users/infomation/edit' =>'users#edit', as: 'edit_infomation'
+    patch 'users/infomation' =>'users#update', as: 'infomation'
+    get 'users/confirm', as: 'confirm'
+    patch 'users/withdraw', as: 'withdraw'
+
+    resources :games, only:[:index, :show] do
+      resources :reviews, only:[:new, :create, :destroy]
+    end
+    
+    resources :reviews, only:[:new, :create, :destroy] do
+      resources :comments, only:[:new, :create, :destroy]
+    end
+
+    get 'games/pc', as: 'pc'
+    get 'games/ps', as: 'ps'
+    get 'games/switch', as: 'switch'
+    get 'games/portable', as: 'portable'
+    get 'games/smartphone', as: 'smartphone'
+
+    get '/'=> 'homes#top'
+    get 'about'=> 'homes#about', as: 'about'
   end
   # 顧客用
   # URL /users/sign_in ...
@@ -45,7 +41,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
