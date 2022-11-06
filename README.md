@@ -26,7 +26,8 @@
 https://drive.google.com/file/d/1G52rL6dNBDb0nuLTmAFMRWICo0eM0LWl/view?usp=sharing  
 - テーブル定義書  
 https://docs.google.com/spreadsheets/d/1wp5iqg7wKNri5FQ0A1jbWu3AbnRWE8ZQ9nWNJ8anVys/edit?usp=sharing  
-- 詳細設計を追記
+- 詳細設計  
+https://docs.google.com/spreadsheets/d/1nbbjcQfFgWi_MHl4oTvyPFkuFMd3uKvaqlNX9Pg0aL4/edit?usp=sharing  
 
 ## 開発環境
 - OS：Linux(CentOS)
