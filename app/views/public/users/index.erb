@@ -1,0 +1,21 @@
+<h3><strong>マイページ</strong></h3>
+<table>
+  <tr>
+    <td>会員ID</td>
+    <td><%= @user.id %></td>
+  </tr>
+  <tr>
+    <td>氏名</td>
+    <td><%= @user.name %></td>
+  </tr>
+  <tr>
+    <td>メールアドレス</td>
+    <td><%= @user.email %></td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td><%= link_to 'レビュー履歴一覧', history_path, class: 'btn btn-outline-warning' %></td>
+    <td><%= link_to '編集する', edit_infomation_path, class: 'btn btn-success' %></td>
+  </tr>
+</table>

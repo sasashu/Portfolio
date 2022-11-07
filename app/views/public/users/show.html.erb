@@ -1,2 +1,11 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<h3><strong>レビュー履歴一覧</strong></h3>
+ <% game.each do |game| %>
+ <!--ゲームのタイトル-->
+  <%= game.title %>
+    <% game.reviews.each do |review| %>
+  <!--レビューのタイトル-->
+      <%= review.review_title %>
+  <!--レビューの星-->
+      <%= review.rate %>
+    <% end %>
+ <% end %>

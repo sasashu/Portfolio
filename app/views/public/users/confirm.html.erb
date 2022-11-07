@@ -1,2 +1,10 @@
-<h1>Public::Users#confirm</h1>
-<p>Find me in app/views/public/users/confirm.html.erb</p>
+<h3><strong>本当に退会しますか？</strong></h3>
+      <p>退会すると会員情報の確認や、
+        レビュー履歴の閲覧が出来なくなります。<br>
+        退会する場合は「退会する」をクリックしてください。<br>
+        復元したい際は、管理者にお問合せください。
+      </p>
+
+      <%= link_to "マイページに戻る", my_page_path, class:"btn btn-primary" %>
+      <%= link_to "退会する", withdraw_path, method: :patch, data: { confirm: '本当に退会しますか？' }, class:"btn btn-danger" %>
+    </div>
