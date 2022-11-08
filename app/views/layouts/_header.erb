@@ -1,0 +1,74 @@
+  <header class="shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <%= link_to root_path,class: 'nav-link text-dark' do %>
+          <font size="5">
+            <span>ReviewGames</span><i class="fa-solid fa-gamepad"></i></font>
+        <% end %>
+
+        <!--会員がログインしているとき-->
+          <% if user_signed_in? %>
+            <div class="text-center">
+              ようこそ、<%= current_user.name %>さん!
+            </div>
+          <% end %>
+
+        <div class="col-sm-9">
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <!--会員がログインしているとき-->
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to 'マイページ', my_page_path, class: "btn btn-outline-secondary ml-2 my-3", style:"margin-right:10px;" %>
+                </li>
+                <li>
+                  <%= link_to '記事一覧', games_path, class: "btn btn-outline-secondary ml-2 my-3", style:"margin-right:10px;" %>
+                </li>
+                <li>
+                  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary ml-2 my-3", style:"margin-right:20px;" %>
+                </li>
+              <!--管理者がログインしているとき-->
+              <% elsif admin_signed_in? %>
+                <li>
+                  <%= link_to '記事一覧', games_path, class: "btn btn-outline-secondary ml-2 my-3", style:"margin-right:20px;" %>
+                </li>
+                <li>
+                  <%= link_to '会員一覧', admin_users_path, class: "btn btn-outline-secondary ml-2 my-3", style:"margin-right:20px;" %>
+                </li>
+                <li>
+                  <%= link_to 'タグ一覧', admin_tags_path, class: "btn btn-outline-secondary ml-2 my-3", style:"margin-right:20px;" %>
+                </li>
+                <li>
+                  <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary ml-2 my-3", style:"margin-right:20px;" %>
+                </li>
+              <!--ログインしていないとき-->
+              <% else %>
+                <li>
+                  <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-outline-secondary ml-2 my-3 sign_in", style:"margin-right:10px;", method: :post %>
+                </li>
+                <li>
+                  <%= link_to 'about', about_path, class: "btn btn-outline-secondary ml-2 my-3", style:"margin-right:10px;" %>
+                </li>
+                <li>
+                  <%= link_to '記事一覧', games_path, class: "btn btn-outline-secondary ml-2 my-3", style:"margin-right:10px;" %>
+                </li>
+                <li>
+                  <%= link_to '新規登録', new_user_registration_path, class: "btn btn-outline-secondary ml-2 my-3", style:"margin-right:10px;" %>
+                </li>
+                <li>
+                  <%= link_to 'ログイン', new_user_session_path, class: "btn btn-outline-secondary ml-2 my-3", style:"margin-right:10px;" %>
+                </li>
+                <li>
+                  <%= link_to "管理者ログイン", new_admin_session_path, class: "btn btn-outline-secondary ml-2 my-3", style:"margin-right:10px;" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
