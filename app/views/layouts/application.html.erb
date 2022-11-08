@@ -35,6 +35,8 @@
 </div>
 
   <body>
+   <p class="text-success"><%= flash[:notice] %></p>
+   <p class="text-danger"><%= flash[:alert] %></p>
     <%= yield %>
   </body>
 </html>

@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   
   def show
     @user = current_user
-    # @games = current_user
+    # @games = 
   end
 
   def edit

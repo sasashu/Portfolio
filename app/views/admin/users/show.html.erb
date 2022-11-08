@@ -1,2 +1,29 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<h3><strong><%= @user.name %>さんの会員情報詳細</strong></h3>
+<table>
+  <tr>
+    <td>会員ID</td>
+    <td><%= @user.id %></td>
+  </tr>
+  <tr>
+    <td>氏名</td>
+    <td><%= @user.name %></td>
+  </tr>
+  <tr>
+    <td>メールアドレス</td>
+    <td><%= @user.email %></td>
+  </tr>
+  <tr>
+    <td>会員ステータス</td>
+    <td><% if @user.is_active == true %>
+          <td class="text-success"><b>有効</b></td>
+        <% else %>
+          <td class="text-secondary"><b>退会</b></td>
+        <% end %></td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td><%= link_to 'レビュー履歴一覧', history_path, class: 'btn btn-outline-warning' %></td>
+    <td><%= link_to '編集する', edit_admin_user_path, class: 'btn btn-success' %></td>
+  </tr>
+</table>
