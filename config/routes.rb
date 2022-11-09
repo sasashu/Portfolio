@@ -40,6 +40,8 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get 'about'=> 'homes#about', as: 'about'
   end
+  
+  get "search" => "searches#search"
 
   # 顧客用
   # URL /users/sign_in ...

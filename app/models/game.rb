@@ -6,4 +6,12 @@ class Game < ApplicationRecord
   validates :title, presence:true
   validates :introduction, presence:true
   validates :release, presence:true
+  
+  def self.search(keyword)
+    if search
+      Game.where(['name LIKE ?', "%#{keyword}%"])
+    else
+      Game.all
+    end
+  end
 end
