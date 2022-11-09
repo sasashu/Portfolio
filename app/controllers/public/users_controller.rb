@@ -1,18 +1,19 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_guest_user, only: [:edit]
+
   def index
     @user = current_user
   end
-  
+
   def show
     @user = current_user
-    # @games = 
+    # @user = Review.find_by(id: params[:id]).user
+    @reviews = @user.reviews
   end
 
   def edit
     @user = current_user
-  end
-
-  def confirm
   end
 
   def update
@@ -32,9 +33,16 @@ class Public::UsersController < ApplicationController
   end
 
   private
-  
+
   def user_params
     params.require(:user).permit(:name, :email, :is_active)
   end
-  
+
+  def ensure_guest_user
+    @user = current_user
+    if @user.name == "guestuser"
+      redirect_to my_page_path, alert: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
+  end
+
 end

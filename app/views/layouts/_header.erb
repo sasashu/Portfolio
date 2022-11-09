@@ -9,14 +9,16 @@
           <font size="5">
             <span>ReviewGames</span><i class="fa-solid fa-gamepad"></i></font>
         <% end %>
-
         <!--会員がログインしているとき-->
           <% if user_signed_in? %>
             <div class="text-center">
               ようこそ、<%= current_user.name %>さん!
             </div>
-          <% end %>
+            <!--<ul>-->
+              <!--<%= link_to '新規記事登録', new_admin_game_path, class: "btn btn-outline-warning ml-2 my-3", style:"margin-right:10px;" %>-->
+            <!--</ul>-->
 
+          <% end %>
         <div class="col-sm-9">
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">

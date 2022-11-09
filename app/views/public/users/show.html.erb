@@ -1,11 +1,9 @@
 <h3><strong>レビュー履歴一覧</strong></h3>
- <% games.each do |game| %>
- <!--ゲームのタイトル-->
-  <%= game.title %>
-    <% game.reviews.each do |review| %>
-  <!--レビューのタイトル-->
-      <%= review.review_title %>
-  <!--レビューの星-->
-      <%= review.rate %>
-    <% end %>
+ <% @reviews.each do |review| %>
+   <!--ゲームのタイトル-->
+   <%= game.title %>
+   <!--レビューのタイトル-->
+    <%= review.review_title %>
+   <!--レビューの星-->
+    <%= review.rate %>
  <% end %>
