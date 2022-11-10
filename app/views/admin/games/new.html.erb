@@ -1,2 +1,21 @@
 <h4><strong>新規記事作成</strong></h4>
-<p>Find me in app/views/admin/games/new.html.erb</p>
+<p>サーチ画面</p>
+<!--検索バーを表示-->
+<%= form_tag new_admin_game_path, method: :get do %>
+<%= text_field_tag :title, @title %>
+<%= button_tag "探す" %>
+<% end %>
+
+<!--検索結果を表示-->
+<% if @books %>
+<% @books.each do |book| %>
+<!--ご自身が表示させたいデータを記載してください。-->
+<!--以下のコードではは画像、タイトル、著者名、商品の説明を表示させています。-->
+<div style="flex-direction: row;">
+<div class="book_date">
+<%= book.title %><br>
+</div>
+</div>
+<!--<%#= book.item_caption %>  -->
+<% end %>
+<% end %>

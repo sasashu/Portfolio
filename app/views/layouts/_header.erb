@@ -47,6 +47,10 @@
                 <li>
                   <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary ml-2 my-3", style:"margin-right:20px;" %>
                 </li>
+                <li>
+                  <%= link_to '新規記事登録', new_admin_game_path, class: "btn btn-outline-warning ml-2 my-3", style:"margin-right:10px;" %>
+                </li>
+
               <!--ログインしていないとき-->
               <% else %>
                 <li>
