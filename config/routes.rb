@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
     resources :tags, only:[:index, :create, :edit, :update, :destroy]
 
-    resources :games
+    resources :games, only:[:new, :create, :edit, :update, :destroy]
 
     resources :reviews, only:[:destroy]
     resources :comments, only:[:destroy]

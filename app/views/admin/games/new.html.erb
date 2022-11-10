@@ -1,4 +1,44 @@
 <h4><strong>新規記事作成</strong></h4>
+<%= form_with model: @game, url:admin_games_path do |f| %>
+  <table class="table table-borderless">
+    <tr>
+      <td><%= f.label :title, "商品名" %></td>
+      <td><%= f.text_field :title, class: 'form-control game_name', placeholder: "ゲームタイトル" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :introduction, "ゲーム紹介文" %></td>
+      <td><%= f.text_area :introduction, rows: 5, class: 'form-control game_introduction', placeholder: "ここに説明文を記述します", row: 5 %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :release, "発売日" %></td>
+      <td><%= f.text_field :release, class: 'form-control release', placeholder: "yyyy/mm/dd" %></td>
+    </tr>
+    <tr>
+      <td>
+      <div class="check_box">
+        <span>タグ</span>
+        <%= collection_check_boxes(:game, :tag_ids, Tag.all, :id, :name) do |tag| %>
+      <div>
+        <%= tag.label do %>
+        <%= tag.check_box %>
+        <%= tag.text %>
+        <% end %>
+     <% end %>
+     </div>
+      </td>
+    </tr>
+    </table>
+
+
+  <div class="d-flex justify-content">
+    <%= f.submit "新規登録", class: 'btn btn-success' %>
+  </div>
+<% end %>
+
+
+
+
+
 <p>サーチ画面</p>
 <!--検索バーを表示-->
 <%= form_tag new_admin_game_path, method: :get do %>

@@ -1,2 +1,15 @@
-<h4><strong>記事一覧全＜＞件</strong></h4>
+
+<h4><strong>記事一覧全<%= @games.count %>件</strong></h4>
 <p>Find me in app/views/public/games/index.html.erb</p>
+<table>
+  <% @games.each do |game| %>
+    <tr>
+      <p><%= game.title %></p>
+      <p><%= game.introduction %></p>
+      <p><%= game.release %></p>
+        <% game.tags.each do |tag| %>
+          <p><%= tag.name %></p>
+        <% end %>
+     </tr>
+  <% end %>
+</table>

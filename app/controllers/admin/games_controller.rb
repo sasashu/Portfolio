@@ -1,26 +1,43 @@
 class Admin::GamesController < ApplicationController
-  def index
-  end
+  # def index
+  # end
 
   # def new
   # end
 
-  def show
-  end
+  # def show
+  # end
 
   def edit
+    @game = Game.find(params[:id])
   end
 
   def create
+    @game = Game.new(game_params)
+    if @game.save
+      redirect_to game_path(@game.id), notice: "登録が完了しました。"
+    else
+      render :new
+    end
   end
 
   def update
+    @game = Game.find(params[:id])
+    if @game.update(game_params)
+      redirect_to game_path(@game.id), notice: "変更が保存されました。"
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @game = Game.find(params[:id])
+    @game.destroy
+    redirect_to games_path, alert: "削除されました。"
   end
   
   def new
+    @game = Game.new
 
     #ここで空の配列を作ります
     @books = []
@@ -65,4 +82,9 @@ class Admin::GamesController < ApplicationController
   # def book_params
   # params.require(:book).permit(:title)
   # end
+  
+  def game_params
+    params.require(:game).permit(:title, :introduction, :release, tag_ids: [])
+  end
+
 end
