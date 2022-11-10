@@ -48,12 +48,16 @@
 
 <!--検索結果を表示-->
 <% if @books %>
-<% @books.each do |book| %>
+<%= @books.each do |book| %>
 <!--ご自身が表示させたいデータを記載してください。-->
 <!--以下のコードではは画像、タイトル、著者名、商品の説明を表示させています。-->
 <div style="flex-direction: row;">
 <div class="book_date">
-<%= book.title %><br>
+  <%= form_with model: Game.new,url:admin_game_path(book.title),method: :get do |f| %>
+<%= book.title %>
+<%= f.hidden_field :title,value: book.introduction %>
+<%= f.submit"詳細" %>
+<% end %>
 </div>
 </div>
 <!--<%#= book.item_caption %>  -->
