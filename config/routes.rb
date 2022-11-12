@@ -30,17 +30,17 @@ Rails.application.routes.draw do
     get 'games/smartphone', as: 'smartphone'
 
     resources :games, only:[:index, :show] do
-      resources :reviews, only:[:new, :create, :destroy]
+      resources :reviews, only:[:create, :destroy]
     end
 
-    resources :reviews, only:[:new, :create, :destroy] do
+    resources :reviews, only:[:create, :destroy] do
       resources :comments, only:[:new, :create, :destroy]
     end
 
     root to: "homes#top"
     get 'about'=> 'homes#about', as: 'about'
   end
-  
+
   get "search" => "searches#search"
 
   # 顧客用
@@ -49,12 +49,12 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   # ゲストログイン用
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
-  
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

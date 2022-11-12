@@ -5,6 +5,9 @@ class Public::GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @review = Review.new
+    # @game = Game.find(params[:game_id])
+    @reviews = @game.reviews
   end
 
   def pc

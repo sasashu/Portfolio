@@ -1,15 +1,15 @@
 
 <h4><strong>記事一覧全<%= @games.count %>件</strong></h4>
-<p>Find me in app/views/public/games/index.html.erb</p>
 <table>
   <% @games.each do |game| %>
     <tr>
-      <p><%= game.title %></p>
+      <p><%= link_to game.title, game_path(game.id) %></p>
       <p><%= game.introduction %></p>
       <p><%= game.release %></p>
         <% game.tags.each do |tag| %>
           <p><%= tag.name %></p>
         <% end %>
+        <!--調整後星を入れる-->
      </tr>
   <% end %>
 </table>

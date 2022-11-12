@@ -1,8 +1,39 @@
 <h4><strong><ゲーム詳細></strong></h4>
-<p>Find me in app/views/public/games/show.html.erb</p>
 <%= @game.title %>
 <%= @game.introduction %>
 <%= @game.release %>
 <% @game.tags.each do |tag| %>
-    <%= tag.name %>
+  <%= tag.name %>
 <% end %>
+
+<!--style="width: @game.review_score_percentage %で星を割合で表示している。-->
+<div class="card-content">
+  <div class="content average-score">
+    <div class="star-rating mb-2">
+      <div class="star-rating-front" style="width: <%= @game.review_score_percentage %>%">★★★★★</div>
+      <div class="star-rating-back">★★★★★</div>
+    </div>
+    <div class="average-score-display ml-3 pt-2">
+      <%= @game.avg_score %>点（<%= @game.reviews.count %>件のレビュー）
+    </div>
+  </div>
+</div>
+
+ <table class="table is-fullwidth has-text-centered">
+          <thead>
+            <tr>
+              <th>ユーザー</th><th>タイトル</th><th>点数</th><th>内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @reviews.each do |review| %>
+              <tr>
+                <td><%= review.user.name %></td>
+                <td><%= review.review_title %></td>
+                <td><%= review.rate %></td>
+                <td><%= review.review_comment %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+<%= render 'public/reviews/form', review: @review, game: @game %>

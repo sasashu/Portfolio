@@ -1,0 +1,23 @@
+<div class="rating-box"><h4><strong>レビューを書く</strong></h4>
+
+  <%= form_with model: review, url: game_reviews_path(game) do |f| %>
+  <div class="main-rating">
+    <div class="ratings">
+      <span id="star" class="fa-regular fa-star fa-lg"></span>
+      <span id="star" class="fa-regular fa-star fa-lg"></span>
+      <span id="star" class="fa-regular fa-star fa-lg"></span>
+      <span id="star" class="fa-regular fa-star fa-lg"></span>
+      <span id="star" class="fa-regular fa-star fa-lg"></span>
+    </div>
+    <div class="rating-value-display"><span id="rating-value-display">0</span id="rating-value-display">/5</div>
+  </div>
+  <%= f.hidden_field :game_id, value: game.id %>
+  <%= f.hidden_field :rate, id: "rating-value" %>
+  <%= f.text_field :review_title, class: "textfield" %>
+  <%= f.text_area :review_comment, class: "textarea" %>
+  <%= f.submit 'レビューを投稿',class: 'btn btn-success' %>
+  <%= link_to "記事一覧に戻る", games_path, class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
+<%= javascript_include_tag "reviews.js" %>

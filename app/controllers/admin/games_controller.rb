@@ -35,7 +35,7 @@ class Admin::GamesController < ApplicationController
     @game.destroy
     redirect_to games_path, alert: "削除されました。"
   end
-  
+
   def new
     @game = Game.new
 
@@ -57,7 +57,7 @@ class Admin::GamesController < ApplicationController
       end
     end
   end
-  
+
   private
 #「楽天APIのデータから必要なデータを絞り込む」、且つ「対応するカラムにデータを格納する」メソッドを設定していきます。
   def read(result)
@@ -82,7 +82,7 @@ class Admin::GamesController < ApplicationController
   # def book_params
   # params.require(:book).permit(:title)
   # end
-  
+
   def game_params
     params.require(:game).permit(:title, :introduction, :release, tag_ids: [])
   end

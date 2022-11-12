@@ -1,3 +1,18 @@
 // Place all the styles related to the public/reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+//星のサイズや色を指定
+.rating-box .ratings .fa-star{
+  font-size: 24px;
+  color:#ffcc00;
+  cursor: pointer; //これでカーソルを合わせた時にアクションを表示される
+}
+
+.main-rating {
+  display: flex;
+}
+
+.rating-value-display {
+  font-size: 20px;
+}
