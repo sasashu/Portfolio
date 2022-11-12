@@ -1,5 +1,5 @@
 
-<h4><strong>記事一覧全<%= @games.count %>件</strong></h4>
+<h4><strong>記事一覧全<%= @total_games.count %>件</strong></h4>
 <table>
   <% @games.each do |game| %>
     <tr>
@@ -10,6 +10,20 @@
           <p><%= tag.name %></p>
         <% end %>
         <!--調整後星を入れる-->
+        <div class="card-content">
+  <div class="content average-score">
+    <div class="star-rating mb-2">
+      <div class="star-rating-front" style="width: <%= game.review_score_percentage %>%">★★★★★</div>
+      <div class="star-rating-back">★★★★★</div>
+    </div>
+    <div class="average-score-display ml-3 pt-2">
+      <%= game.avg_score %>点（<%= game.reviews.count %>件のレビュー）
+    </div>
+  </div>
+</div>
+
      </tr>
   <% end %>
 </table>
+
+<%= paginate @games %>

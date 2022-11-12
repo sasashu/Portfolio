@@ -1,6 +1,9 @@
 class Public::GamesController < ApplicationController
   def index
-    @games = Game.page(params[:page]).per(8)
+    # .page(params[:page])の後に.per(10)を追加する事で1ページあたりの表示を制限
+    @games = Game.page(params[:page]).per(10)
+    # 全件表示の為にアクションを作成
+    @total_games = Game.all
   end
 
   def show
