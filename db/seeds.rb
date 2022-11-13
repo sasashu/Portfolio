@@ -9,3 +9,9 @@ Admin.create!(
    email: 'admin@admin',
    password: 'adminadmin'
 )
+Tag.create([
+  { name: 'PC' },
+  { name: 'PS4/PS5' },
+  { name: 'Switch' },
+  { name: '携帯ゲーム' },
+])

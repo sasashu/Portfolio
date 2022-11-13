@@ -13,8 +13,8 @@
   </div>
   <%= f.hidden_field :game_id, value: game.id %>
   <%= f.hidden_field :rate, id: "rating-value" %>
-  <%= f.text_field :review_title, class: "textfield" %>
-  <%= f.text_area :review_comment, class: "textarea" %>
+  <p><%= f.text_field :review_title, class: "textfield" %></p>
+  <p><%= f.text_area :review_comment,rows: 3, class: "textarea" %></p>
   <%= f.submit 'レビューを投稿',class: 'btn btn-success' %>
   <%= link_to "記事一覧に戻る", games_path, class: 'btn btn-primary' %>
   <% end %>
