@@ -31,6 +31,9 @@ Rails.application.routes.draw do
 
     resources :games, only:[:index, :show] do
       resources :reviews, only:[:create, :destroy]
+      collection do
+        get :search
+      end
     end
 
     resources :reviews, only:[:create, :destroy] do
@@ -41,7 +44,7 @@ Rails.application.routes.draw do
     get 'about'=> 'homes#about', as: 'about'
   end
 
-  get "search" => "searches#search"
+  get "search" => "searches#search_result"
 
   # 顧客用
   # URL /users/sign_in ...

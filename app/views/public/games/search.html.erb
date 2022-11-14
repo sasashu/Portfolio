@@ -1,0 +1,27 @@
+<h4><strong>検索結果一覧 全<%= @search_games.count %>件</strong></h4>
+<table>
+  <% @search_games.each do |game| %>
+    <tr>
+      <p><%= link_to game.title, game_path(game.id) %></p>
+      <p><%= game.introduction %></p>
+      <p><%= game.release %></p>
+        <% game.tags.each do |tag| %>
+          <span><%= tag.name %></span>
+        <% end %>
+        <div class="card-content">
+  <div class="content average-score">
+    <div class="star-rating mb-2">
+      <div class="star-rating-front" style="width: <%= game.review_score_percentage %>%">★★★★★</div>
+      <div class="star-rating-back">★★★★★</div>
+    </div>
+    <div class="average-score-display ml-3 pt-2">
+      <%= game.avg_score %>点（<%= game.reviews.count %>件のレビュー）
+    </div>
+  </div>
+</div>
+
+     </tr>
+  <% end %>
+</table>
+
+<%= paginate @search_games %>
