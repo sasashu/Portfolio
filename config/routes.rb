@@ -44,8 +44,6 @@ Rails.application.routes.draw do
     get 'about'=> 'homes#about', as: 'about'
   end
 
-  get "search" => "searches#search_result"
-
   # 顧客用
   # URL /users/sign_in ...
   devise_for :users,skip: [:passwords], controllers: {
