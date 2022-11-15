@@ -1,12 +1,14 @@
 <h4><strong>コメント投稿</strong></h4>
-<%= form_with model: @comment, url:review_comments_path do |f| %>
+<%= form_with model: @comment, url: review_comments_path do |f| %>
   <div class="table table-borderless">
       <%= f.label :comment, "コメント文" %>
+      <%= f.hidden_field :review_id, value: @review.ids %>
       <%= f.text_area :comment, rows: 4, class: 'form-control game_introduction', placeholder: "コメントを入力(最大200文字)" %>
       </div>
       <div class="d-flex justify-content">
     <%= f.submit "新規登録", class: 'btn btn-success' %>
     <%= link_to "記事に戻る", game_path(@review.ids), class: 'btn btn-primary' %>
-    <!--なぜか戻れるけどrenderでエラー-->
+    <!--idsでなぜか戻れるけどrenderでエラー
+    request.refererだとリロードすると戻れない-->
   </div>
 <% end %>

@@ -41,6 +41,10 @@
                 </td>
                 <td><%= link_to 'コメントを書く', new_review_comment_path(@game), class: 'btn btn-outline-success' %></td>
               </tr>
+                              <% review.comments.each do |comment| %>
+                <td><%= comment.comment %></td>
+                <% end %>
+
             <% end %>
           </tbody>
         </table>

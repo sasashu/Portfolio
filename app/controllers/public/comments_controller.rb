@@ -5,15 +5,16 @@ class Public::CommentsController < ApplicationController
     # @game = Game.find(params[:id])
     @user = current_user
     @review = @user.reviews
+    session[:previous_url] = request.referer
   end
 
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to game_path(@comment.game), notice: "登録が完了しました。"
+      redirect_to session[:previous_url], notice: "登録が完了しました。"
     else
-      render :new
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -21,6 +22,7 @@ class Public::CommentsController < ApplicationController
   end
 
   private
+  
   def comment_params
     params.require(:comment).permit(:review_id, :comment)
   end
