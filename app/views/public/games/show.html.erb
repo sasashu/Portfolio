@@ -22,7 +22,7 @@
  <table class="table is-fullwidth has-text-centered">
           <thead>
             <tr>
-              <th>ユーザー</th><th>タイトル</th><th>点数</th><th>内容</th>
+              <th>ユーザー</th><th>タイトル</th><th>内容</th><th>点数</th>
             </tr>
           </thead>
           <tbody>
@@ -30,8 +30,16 @@
               <tr>
                 <td><%= review.user.name %></td>
                 <td><%= review.review_title %></td>
-                <td><%= review.rate %></td>
                 <td><%= review.review_comment %></td>
+                <td class="star">
+                  <!--rateの得点の数だけfor文で★を表示-->
+                  <% if review.rate? %>
+                    <% for i in 1..review.rate do %>
+                      ★
+                    <% end %>
+                  <% end %>
+                </td>
+                <td><%= link_to 'コメントを書く', new_review_comment_path(@game), class: 'btn btn-outline-success' %></td>
               </tr>
             <% end %>
           </tbody>

@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2022_11_06_062557) do
     t.integer "user_id", null: false
     t.string "review_title", null: false
     t.text "review_comment", null: false
-    t.float "rate", null: false
+    t.integer "rate", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
