@@ -9,7 +9,7 @@
             <% @reviews.each do |review| %>
               <tr>
                    <!--ゲームのタイトル-->
-                <td><%= link_to review.game.title, game_path(review) %></td>
+                <td><%= link_to review.game.title, game_path(review.game) %></td>
                 <td><%= review.review_title %></td>
                 <td><%= review.review_comment %></td>
                    <!--レビューの星-->

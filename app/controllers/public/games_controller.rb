@@ -8,7 +8,7 @@ class Public::GamesController < ApplicationController
     # page(params[:page])の後に.per(10)を追加する事で1ページあたりの表示を制限
     @games = @games.page(params[:page]).per(10)
     # 件数表示の為にアクションを作成
-    @total_games = Game.all
+    # @total_games = Game.all
   end
 
   def show

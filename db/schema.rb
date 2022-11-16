@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2022_11_06_062557) do
   create_table "reviews", force: :cascade do |t|
     t.integer "game_id", null: false
     t.integer "user_id", null: false
+    t.integer "review_id"
     t.string "review_title", null: false
     t.text "review_comment", null: false
     t.integer "rate", null: false

@@ -14,4 +14,9 @@ Tag.create([
   { name: 'PS4/PS5' },
   { name: 'Switch' },
   { name: '携帯ゲーム' },
+  { name: 'スマホ' },
+  { name: 'RPG' },
+  { name: 'アクション' },
+  { name: 'アドベンチャー' },
+  { name: 'シミュレーション' },
 ])

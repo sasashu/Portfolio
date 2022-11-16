@@ -1,4 +1,7 @@
 class Public::ReviewsController < ApplicationController
+  before_action :authenticate_user!
+  
+
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
@@ -13,11 +16,14 @@ class Public::ReviewsController < ApplicationController
   end
 
   def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to game_path, notice: "削除されました。"
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:game_id, :review_title, :review_comment, :rate)
+    params.require(:review).permit(:game_id, :review_id, :review_title, :review_comment, :rate)
   end
 end
