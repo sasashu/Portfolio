@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   def set_search
     @query = { title_cont: params[:q] }
     @search = Game.ransack(@query)
-    @search_games = @search.result.order(created_at: :asc).page(params[:page]).per(10)
+    @search_games = @search.result.order(created_at: :desc).page(params[:page]).per(10)
   end
 
 

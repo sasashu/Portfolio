@@ -7,7 +7,8 @@
 </div>
 <div>
   <%= form_tag games_path, method: :get, class: 'boards__searchForm' do %>
-      <%= select_tag :tag_id,options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+      <%= hidden_field_tag :sort, params[:sort] %>
+       <%= select_tag :tag_id,options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
       {
          prompt: 'タグで絞り込み検索',
          onchange: 'submit(this.form);'

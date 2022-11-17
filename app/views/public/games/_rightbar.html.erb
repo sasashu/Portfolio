@@ -1,8 +1,13 @@
-<p>新着順表示</p>
-<p>高評価順表示</p>
-
-<%= form_with url: search_games_path, method: :get, local: true do |f| %>
-<%= f.text_field :q, placeholder: "検索したいワードを入力", value: "" %>
-<%= f.submit "検索", name: nil %>
-<i class="fa fa-search"></i>
-<% end %>
+<div>
+  <%= link_to "新着順", games_path(sort: 'created_at DESC') %> |
+  <%= link_to "古い順", games_path(sort: 'created_at ASC') %><br>
+  <%= link_to "評価の高い順", games_path(sort: 'rate') %><br>
+  <%= link_to "発売日順", games_path(sort: 'release DESC') %>
+</div>
+<div>
+  <%= form_with url: search_games_path, method: :get, local: true do |f| %>
+  <%= f.text_field :q, placeholder: "検索したいワードを入力", value: "" %>
+  <%= f.submit "検索", name: nil %>
+  <i class="fa fa-search"></i>
+  <% end %>
+</div>
