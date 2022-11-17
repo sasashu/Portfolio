@@ -51,9 +51,9 @@
                     <% end %>
                   <% end %>
                 </td>
-                <td><%= link_to 'コメントを書く', new_review_comment_path(@game.id), class: 'btn btn-outline-success' %>
+                <td><%= link_to 'コメントを書く', new_review_comment_path(review.id), class: 'btn btn-outline-success' %>
                 <% if user_signed_in? && current_user.id == review.user_id %>
-                  <%= link_to '削除', game_review_path(:game,:review), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
+                  <%= link_to '削除', game_review_path(@game,review.id), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
                 <% end %>
                 <% if admin_signed_in? %>
                   <%= link_to 'レビューを削除', admin_review_path(review), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
@@ -67,8 +67,11 @@
                 <td><span><%= comment.comment %></span></td>
                   <td>
                     <% if user_signed_in? && current_user.id == comment.user_id %>
-                      <%= link_to '削除', review_comment_path(comment), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
+                      <%= link_to '削除', review_comment_path(review.id,comment.id), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
                     <% end %>
+                <% if admin_signed_in? %>
+                  <%= link_to '削除', admin_comment_path(comment), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
+                <% end %>
                   </td>
                 <% end %>
                 </tr>

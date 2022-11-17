@@ -4,7 +4,7 @@ class Admin::CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to game_path(@comment.review), notice: "削除されました。"
+    redirect_to game_path(@comment.review.game.id), notice: "削除されました。"
   end
 
 end

@@ -14,10 +14,11 @@ class Public::CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
+    # @review = Review.find(params[:id])
     review = Review.find(comment_params[:review_id])
-    game = review.game
+    # @game = review.game
     if @comment.save
-      redirect_to game_path(game.id), notice: "登録が完了しました。"
+      redirect_to game_path(review.game), notice: "登録が完了しました。"
     else
       redirect_back(fallback_location: root_path)
     end
@@ -26,7 +27,7 @@ class Public::CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to session[:previous_url], notice: "削除されました。"
+    redirect_to game_path(@comment.review.game.id), notice: "削除されました。"
   end
 
   private

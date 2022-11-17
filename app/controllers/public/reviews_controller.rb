@@ -18,7 +18,7 @@ class Public::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to game_path, notice: "削除されました。"
+    redirect_to game_path(params[:game_id]), notice: "削除されました。"
   end
 
   private
