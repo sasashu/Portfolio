@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     get 'games/ps', as: 'ps'
     get 'games/switch', as: 'switch'
     get 'games/portable', as: 'portable'
-    get 'games/smartphone', as: 'smartphone'
+    get 'games/other', as: 'other'
 
     resources :games, only:[:index, :show] do
       resources :reviews, only:[:create, :destroy]

@@ -2,7 +2,7 @@ class Public::GamesController < ApplicationController
   before_action :set_game, only: [:edit, :update, :destroy]
 
   def index
-    # 同条件なのでcase文の方が適切
+    # 同条件の多分岐なのでif文よりcase文の方がシンプルに記述できる
     # 1行目でレビューのrateのあるレビューの平均を表示させ、
     # 点数が無いレビューは2行目で.all - 1行目 で点数ありを引いて表示、
     # 3行目で1行目に2行目をpushで追加し、flattenで配列の[ ] を平滑化させている。
@@ -51,7 +51,7 @@ class Public::GamesController < ApplicationController
   def portable
   end
 
-  def smartphone
+  def other
   end
 
   private
