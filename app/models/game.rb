@@ -26,12 +26,4 @@ class Game < ApplicationRecord
     end
   end
 
-
-  def self.search(keyword)
-    if search
-      Game.where(['name LIKE ?', "%#{keyword}%"])
-    else
-      Game.all
-    end
-  end
 end
