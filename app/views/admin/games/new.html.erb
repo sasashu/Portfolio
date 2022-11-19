@@ -1,3 +1,41 @@
+<p>サーチ画面</p>
+<!--検索バーを表示-->
+<%= form_with url: new_admin_game_path, method: :get do %>
+<%= text_field_tag :title, @title %>
+<%= button_tag "探す" %>
+<% end %>
+
+<!--検索結果を表示-->
+<% if @books %>
+<% @books.each do |book| %>
+<!--ご自身が表示させたいデータを記載してください。-->
+<!--以下のコードではは画像、タイトル、著者名、商品の説明を表示させています。-->
+<div style="flex-direction: row;">
+<div class="book_date">
+<%= form_with model: @game,url: admin_games_path do |f| %>
+<%= link_to (image_tag(book.image_url)), book.item_url %>
+<%= book.title %>
+<%= book.label %>
+<%= book.sales_date %>
+<%= book.item_caption %>  
+<%= book.jan %>
+<%= book.item_url %>
+
+<%= f.hidden_field :title,value: book.title %>
+<%= f.hidden_field :item_caption,value: book.item_caption %>
+<%= f.hidden_field :sales_date,value: book.sales_date %>
+<%= f.hidden_field :label,value: book.label %>
+<%= f.hidden_field :jan,value: book.jan %>
+<%= f.hidden_field :item_url,value: book.item_url %>
+<%= f.hidden_field :image_url,value: book.image_url %>
+
+<%= f.submit"詳細" %>
+<% end %>
+</div>
+</div>
+<% end %>
+<% end %>
+
 <h4><strong>新規記事作成</strong></h4>
 <%= form_with model: @game, url:admin_games_path do |f| %>
   <table class="table table-borderless">
@@ -6,13 +44,12 @@
       <td><%= f.text_field :title, class: 'form-control game_name', placeholder: "ゲームタイトル" %></td>
     </tr>
     <tr>
-      <td><%= f.label :introduction, "ゲーム紹介文" %></td>
-      <td><%= f.text_area :introduction, rows: 5, class: 'form-control game_introduction', placeholder: "ここに説明文を記述します", row: 5 %></td>
+      <td><%= f.label :item_caption, "ゲーム紹介文" %></td>
+      <td><%= f.text_area :item_caption, rows: 5, class: 'form-control', placeholder: "ここに説明文を記述します", row: 5 %></td>
     </tr>
     <tr>
-      <td><%= f.label :release, "発売日" %></td>
-      <td><%= f.text_field :release, class: 'form-control release', placeholder: "yyyy/mm/dd" %></td>
-    </tr>
+      <td><%= f.label :sales_date, "発売日" %></td>
+      <td><%= f.text_field :sales_date, class: 'form-control', placeholder: "yyyy/mm/dd" %></td>
     <tr>
       <td>
       <div class="check_box">
@@ -39,23 +76,3 @@
 
 
 
-<p>サーチ画面</p>
-<!--検索バーを表示-->
-<%= form_tag new_admin_game_path, method: :get do %>
-<%= text_field_tag :title, @title %>
-<%= button_tag "探す" %>
-<% end %>
-
-<!--検索結果を表示-->
-<% if @books %>
-<% @books.each do |book| %>
-<!--ご自身が表示させたいデータを記載してください。-->
-<!--以下のコードではは画像、タイトル、著者名、商品の説明を表示させています。-->
-<div style="flex-direction: row;">
-<div class="book_date">
-<%= book.title %><br>
-</div>
-</div>
-<!--<%#= book.item_caption %>  -->
-<% end %>
-<% end %>

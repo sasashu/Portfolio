@@ -9,8 +9,8 @@
   <% @games.each do |game| %>
     <tr>
       <p><%= link_to game.title, game_path(game.id) %></p>
-      <p><%= game.introduction %></p>
-      <p><%= game.release %></p>
+      <p><%= game.item_caption %></p>
+      <p><%= game.sales_date %></p>
         <% game.tags.each do |tag| %>
           <span><%= tag.name %></span>
         <% end %>

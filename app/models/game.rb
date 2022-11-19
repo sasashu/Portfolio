@@ -1,11 +1,12 @@
 class Game < ApplicationRecord
+  # self.primary_key = "jan"
   has_many :reviews, dependent: :destroy
   has_many :game_tags, dependent: :destroy
   has_many :tags, through: :game_tags, dependent: :destroy
 
   validates :title, presence: true
-  validates :introduction, presence: true
-  validates :release, presence: true
+  # validates :introduction, presence: true
+  # validates :release, presence: true
 
 # 星の中身が空では無かったら返す
 # round(1)で小数点第一位まで表示
@@ -25,5 +26,4 @@ class Game < ApplicationRecord
       0.0
     end
   end
-
 end

@@ -15,8 +15,8 @@ class Public::GamesController < ApplicationController
       @games = Game.all.order('created_at DESC')
     when 'date_ASC'
       @games = Game.all.order('created_at ASC')
-    when 'release_DESC'
-      @games = Game.all.order('release DESC')
+    when 'sales_DESC'
+      @games = Game.all.order('sales_date DESC')
     else
       @games = Game.all.order('created_at DESC')
     end

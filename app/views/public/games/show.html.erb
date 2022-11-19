@@ -7,12 +7,16 @@
 
 <h4><strong><ゲーム詳細></strong></h4>
 <%= @game.title %>
-<%= @game.introduction %>
-<%= @game.release %>
+      <p><%= @game.item_caption %></p>
+      <p><%= @game.sales_date %></p>
+      <p><%= @game.label %></p>
+<%= link_to (image_tag(@game.image_url)), @game.item_url %>
+
 <% @game.tags.each do |tag| %>
   <%= tag.name %>
 <% end %>
 <% if admin_signed_in? %>
+  <%= link_to '記事を編集', edit_admin_game_path(@game), class: 'btn btn-outline-success' %>
   <%= link_to '記事を削除', admin_game_path, class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
 <% end %>
 

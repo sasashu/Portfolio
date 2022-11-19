@@ -7,8 +7,30 @@ class Admin::GamesController < ApplicationController
   # def new
   # end
 
-  # def show
-  # end
+  def show
+    results = RakutenWebService::Books::Game.search({
+    jan: params[:game][:title],
+    })
+
+    if Game.exists?(title: params[:game][:title])
+      @game = Game.find_by(title: params[:game][:title])
+    else
+  #この部分で「@books」にAPIからの取得したJSONデータを格納していきます。
+  #read(result)については、privateメソッドとして、設定しております。
+    #下位置
+      @game = Game.new(game_params)
+
+      # @game.introduction = "仮の説明です"
+      # @game.release = Date.today
+      @game.save
+    end
+      @games = []
+      results.each do |result|
+    #下位置
+       game = Game.new(read(result))
+       @games << game  #<<何？ハッシュを取り出す
+      end
+  end
 
   def edit
     @game = Game.find(params[:id])
@@ -58,26 +80,44 @@ class Admin::GamesController < ApplicationController
        @books << book  #<<何？ハッシュを取り出す
       end
     end
+    # @books.each do |book|
+    #   unless Game.all.include?(book)
+    #     book.save
+    #   end
+    # end
   end
+  
+  # def create
+  #   result = RakutenWebService::Books::Game.search({
+  #   jan: params[:jan],
+  #   })
+  #   Game.find_or_create_by!(read(result.response.as_json[0]["params"]))
+  #   redirect_to request.referer
+  #       render :request.referer
+  # end
 
   private
 #「楽天APIのデータから必要なデータを絞り込む」、且つ「対応するカラムにデータを格納する」メソッドを設定していきます。
   def read(result)
     title = result["title"]
+    label = result["label"]
     # author = result["author"]
-    # url = result["itemUrl"]
-    # isbn = result["isbn"]
-    # image_url = result["mediumImageUrl"].gsub('?_ex=120x120', '')
+    sales_date = result["salesDate"]
+    item_url = result["itemUrl"]
+    jan = result["jan"]
+    image_url = result["mediumImageUrl"].gsub('?_ex=120x120', '')
     # book_genre_id = result["booksGenreId"]
-    # item_caption = result["itemCaption"]
+    item_caption = result["itemCaption"]
     {
     title: title,
+    label: label,
     # author: author,
-    # url: url,
-    # isbn: isbn,
-    # image_url: image_url,
+    sales_date: sales_date,
+    item_url: item_url,
+    jan: jan,
+    image_url: image_url,
     # book_genre_id: book_genre_id,
-    # item_caption: item_caption
+    item_caption: item_caption
     }
   end
 
@@ -86,7 +126,7 @@ class Admin::GamesController < ApplicationController
   # end
 
   def game_params
-    params.require(:game).permit(:title, :introduction, :release, tag_ids: [])
+    params.require(:game).permit(:title, :item_caption, :sales_date, :label, :jan, :item_url, :image_url, tag_ids: [])
   end
 
 end
