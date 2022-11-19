@@ -1,6 +1,6 @@
 class Review < ApplicationRecord
   has_many :comments, dependent: :destroy
-  belongs_to :game#, primary_key: "jan"
+  belongs_to :game
   belongs_to :user
 
   validates :review_title, presence: true
