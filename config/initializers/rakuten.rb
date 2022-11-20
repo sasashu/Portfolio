@@ -1,4 +1,4 @@
 RakutenWebService.configure do |c|
-    c.application_id = '1015673185157195786'
+    c.application_id = ENV['API_RAKUTEN']
     c.affiliate_id = '-------------------------------------'
 end
