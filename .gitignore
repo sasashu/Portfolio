@@ -41,5 +41,5 @@ yarn-debug.log*
 
 .DS_Store
 /.env
-db/seed
-config/initializers/rakuten
+/db/seed
+/config/initializers/rakuten
