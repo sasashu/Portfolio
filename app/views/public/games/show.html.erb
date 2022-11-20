@@ -12,8 +12,8 @@
       <% @game.tags.each do |tag| %>
         [<%= tag.name %>]
       <% end %>
-            <span><%= @game.label %></span> |
-            <span><%= @game.sales_date %></span>
+      <span><%= @game.label %></span> |
+      <span><%= @game.sales_date %></span>
       
       <% if admin_signed_in? %>
         <%= link_to '記事を編集', edit_admin_game_path(@game), class: 'btn btn-outline-success' %>
@@ -80,9 +80,6 @@
               </tr>
 
             </tr>
-              <!--<% review.comments.each do |comment| %>-->
-                <!--<td><%= comment.comment %></td>-->
-              <!--<% end %>-->
 
           <% end %>
         </tbody>
