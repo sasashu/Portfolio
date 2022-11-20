@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <h5 class='mx-5 my-5', style="background-color: #eee; width:220px; padding-left: 12px; margin-bottom: 40px;"><b>タグ一覧/追加</b></h5>
+    <h4 class='mx-5 my-5', style="background-color: #eee; width:220px; padding-left: 12px; margin-bottom: 40px;"><b>タグ一覧/追加</b></h4>
   </div>
+  <%= render "admin/shared/error_messages", resource: @tag %>
   <div class="row">
-    <%= render "admin/shared/error_messages", resource: @tag %>
     <%= form_with model: @tag, url:admin_tags_path do |f| %>
       <div class="form-inline">
         <span class="mr-3"><b><%= f.label :name, 'タグ名' %></b></span>
