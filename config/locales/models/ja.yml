@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      tag: タグ
+      review: レビュー
+      comment: コメント
+      game: 記事
+    attributes:
+      user:
+        name: 名前
+      tag:
+        name: タグ名
+      review:
+        review_title: タイトル
+        review_comment: コメント
+        rate: 評価
+      comment:
+        comment: コメント

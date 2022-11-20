@@ -18,13 +18,17 @@
             <div class="book_date">
               <!--表示させたい情報を記述-->
               <%= form_with model: @game,url: admin_games_path do |f| %>
-                <%= link_to (image_tag(book.image_url)), book.item_url %>
-                <%= book.title %>
+                <%#= link_to (image_tag(book.image_url)), book.item_url %>
+                <div>
+                  <%= link_to book.item_url do %>
+                    <%= image_tag book.image_url, width: '30%', height: '30%' %>
+                  <% end %>
+                  <%= book.title %>
+                </div>
                 <%= book.label %>
                 <%= book.sales_date %>
                 <%= book.item_caption %>  
                 <%= book.jan %>
-                <%= book.item_url %>
                 
                 <!--ここでその情報を送っている-->
                 <%= f.hidden_field :title,value: book.title %>
@@ -35,7 +39,7 @@
                 <%= f.hidden_field :item_url,value: book.item_url %>
                 <%= f.hidden_field :image_url,value: book.image_url %>
                 
-                <%= f.submit"記事を投稿", class: 'btn btn-outline-primary' %>
+                <p><%= f.submit"記事を投稿", class: 'btn btn-outline-primary' %></p>
               <% end %>
             </div>
           </div>

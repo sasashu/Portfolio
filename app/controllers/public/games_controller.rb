@@ -28,7 +28,7 @@ class Public::GamesController < ApplicationController
     end
     # page(params[:page])の後に.per(10)を追加する事で1ページあたりの表示を制限
     # findだと問題は無いが、where等の配列を持って来たいのでKaminariにarrayを追加で記述する。
-    @games = Kaminari.paginate_array(@games).page(params[:page]).per(10)
+    @games = Kaminari.paginate_array(@games).page(params[:page]).per(20)
 
   end
 
