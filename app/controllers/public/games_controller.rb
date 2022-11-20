@@ -15,8 +15,8 @@ class Public::GamesController < ApplicationController
       @games = Game.all.order('created_at DESC')
     when 'date_ASC'
       @games = Game.all.order('created_at ASC')
-    when 'release_DESC'
-      @games = Game.all.order('release DESC')
+    when 'sales_DESC'
+      @games = Game.all.order('sales_date DESC')
     else
       @games = Game.all.order('created_at DESC')
     end
@@ -57,6 +57,6 @@ class Public::GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:title, :introduction, :release, tag_ids: [])
+    params.require(:game).permit(:title,  tag_ids: [])
   end
 end

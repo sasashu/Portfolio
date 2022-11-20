@@ -41,8 +41,12 @@ ActiveRecord::Schema.define(version: 2022_11_06_062557) do
 
   create_table "games", force: :cascade do |t|
     t.string "title", null: false
-    t.text "introduction", null: false
-    t.date "release", null: false
+    t.text "item_caption"
+    t.string "sales_date"
+    t.string "label"
+    t.string "jan"
+    t.text "item_url"
+    t.text "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
