@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_search
-  
+
 
   private
 
@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   def set_search
     @query = { title_cont: params[:q] }
     @search = Game.ransack(@query)
-    @search_games = @search.result.order(created_at: :desc).page(params[:page]).per(10)
+    @search_games = @search.result.order(created_at: :desc).page(params[:page]).per(20)
   end
 
 

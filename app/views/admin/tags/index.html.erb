@@ -1,33 +1,33 @@
 <div class="container">
   <div class="row">
-    <h4 class='mx-5 my-5', style="background-color: #eee; width:220px; padding-left: 12px; margin-bottom: 40px;"><b>タグ一覧/追加</b></h4>
+    <div class="col-6 my-5 ml-5">
+      <div class="card">
+        <div><h5 class="card-header"><strong>タグ一覧/追加</strong></h5>
+          <%= form_with model: @tag, url:admin_tags_path do |f| %>
+            <div class="card-body">
+              <%= render "admin/shared/error_messages", resource: @tag %>
+              <p>
+                <%= f.label :name, 'タグ名:' %>
+                <%= f.text_field :name, placeholder: "追加するタグ名を入力", class: 'form-control' %>
+              </p>
+              <div class="card-text text-right"><%= f.submit '新規登録', class: 'btn btn-success' %></div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-  <%= render "admin/shared/error_messages", resource: @tag %>
+
   <div class="row">
-    <%= form_with model: @tag, url:admin_tags_path do |f| %>
-      <div class="form-inline">
-        <span class="mr-3"><b><%= f.label :name, 'タグ名' %></b></span>
-        <span class="mr-3"><%= f.text_field :name, placeholder: "タグ名", class: 'form-control' %></span>
-        <span class="mr-3"><%= f.submit '新規登録', class: 'btn btn-success' %></span>
+    <% @tags.each do |tag| %>
+      <div class="col-sm-3 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= tag.name %></h5>
+            <div class="card-text text-right"><%= link_to "編集する", edit_admin_tag_path(tag.id), class: "btn btn-success" %></div>
+          </div>
+        </div>
       </div>
     <% end %>
-  </div>
-  <div class="row mt-5">
-    <div class="col-7">
-      <table class='table'>
-        <thead style="background-color: #eee;">
-          <th class="text-center">タグ</th>
-          <th></th>
-        </thead>
-        <% @tags.each do |tag| %>
-        <tbody>
-          <tr>
-            <td><%= tag.name %></td>
-            <td class="d-flex justify-content-end"><%= link_to "編集する", edit_admin_tag_path(tag.id), class: "btn btn-success" %></td>
-          </tr>
-        </tbody>
-        <% end %>
-      </table>
-    </div>
   </div>
 </div>

@@ -3,41 +3,31 @@
     <div class="col-2">
       <%= render 'leftbar' %>
     </div>
-    <div class="col-8">
+    <div class="col-9">
       <h4><strong>検索結果一覧 全<%= @search_games.count %>件</strong></h4>
-      <table>
+      <div>
         <% @search_games.each do |game| %>
-          <tr>
-            <p><%= link_to game.title, game_path(game.id) %></p>
-            <div class="card-content">
-              <div class="content average-score">
-                <div class="star-rating mb-2">
-                  <div class="star-rating-front" style="width: <%= game.review_score_percentage %>%">★★★★★</div>
-                  <div class="star-rating-back">★★★★★</div>
-                </div>
-                <div class="average-score-display ml-3 pt-2">
-                  <%= game.avg_score %>点（<%= game.reviews.count %>件のレビュー）
-                </div>
-              </div>
-              <div class="d-flex bd-highlight mb-3">
-                 <div class="mr-auto p-2 bd-highlight">
-                <% game.tags.each do |tag| %>
-                  [<%= tag.name %>]
-                <% end %>
-                </div>
-                <div class="p-2 bd-highlight"><%= game.label %>　|</div>
-                <div class="p-2 bd-highlight"><%= game.sales_date %></div>
-              </div>
-            </div>
-          </tr>
-        <% end %>
-      </table>
-      
-      <%= paginate @search_games %>
+      <div class="card-header"><%= link_to game.title, game_path(game.id) %></div>
+      <div class="card-content">
+        <div class="content average-score">
+          <div class="star-rating card-text mb-2">
+            <div class="star-rating-front" style="width: <%= game.review_score_percentage %>%">★★★★★</div>
+            <div class="star-rating-back">★★★★★</div>
+          </div>
+          <div class="average-score-display ml-3 pt-2">
+            <%= game.avg_score %>点（<%= game.reviews.count %>件のレビュー）
+          </div>
+        </div>
+        <div class="d-flex bd-highlight mb-3">
+          <div class="mr-auto p-2 bd-highlight">
+            <% game.tags.each do |tag| %>
+              [<%= tag.name %>]
+            <% end %>
+          </div>
+          <div class="p-2 bd-highlight"><%= game.label %>　|</div>
+          <div class="p-2 bd-highlight"><%= game.sales_date %></div>
+        </div>
       </div>
-      <div class="col-2">
-        <%= render 'rightbar' %>
-      </div>
-    </div>
-  </div>
+  <% end %>
 </div>
+<%= paginate @search_games %>

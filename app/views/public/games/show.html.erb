@@ -2,9 +2,7 @@
   <div class="row">
     <div class="col-2">
       <%= render 'public/games/leftbar' %>
-      <%= render 'public/games/rightbar' %>
     </div>
-
     <div class="col-10">
       <h4><strong><%= @game.title %></strong></h4>
       <%= render "public/shared/error_messages", resource: @review %>
@@ -79,9 +77,9 @@
           </div>
         </div>
       </div>
-      <div class="card w-75 border-warning mb-4" style="margin-left: 25%;">
+      <div class="card w-75 border-primary mb-4" style="margin-left: 25%;">
         <% review.comments.each do |comment| %>
-        <div class="card-header border-warning">
+        <div class="card-header border-primary">
           <%= comment.user.name %>
         </div>
         <div class="card-body">

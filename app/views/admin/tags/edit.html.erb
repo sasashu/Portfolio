@@ -1,18 +1,23 @@
 <div class="container">
   <div class="row">
-    <div class="col-10">
-      <h4 class='mx-5 my-5', style="background-color: #eee; width:220px; padding-left: 12px; margin-bottom: 40px;"><b>タグ編集</b></h4>
-    </div>
-    <%= render "admin/shared/error_messages", resource: @tag %>
-    <div>
-      <%= form_with model: @tag, url: admin_tag_path(@tag.id) do |f| %>
-        <div class="form-inline">
-          <span class="mr-3"><b><%= f.label :name, 'タグ名' %></b></span>
-          <span class="mr-3"><%= f.text_field :name, placeholder: "タグ名", class: 'form-control' %></span>
-          <span class="mr-2"><%= f.submit '変更を保存',class: 'btn btn-success' %></span>
-          <span class="mr-2"><%= link_to '削除する', admin_tag_path(@tag.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger"%></span>
+    <div class="col-6 my-5 ml-5">
+      <div class="card">
+        <div><h5 class="card-header"><strong>タグ編集</strong></h5>
+          <%= form_with model: @tag, url: admin_tag_path(@tag.id) do |f| %>
+            <div class="card-body">
+              <%= render "admin/shared/error_messages", resource: @tag %>
+              <p>
+                <%= f.label :name, 'タグ名:' %>
+                <%= f.text_field :name, placeholder: "編集するタグ名を入力", class: 'form-control' %>
+              </p>
+              <div class="card-text text-right">
+                <%= f.submit '変更を保存',class: 'btn btn-success' %>
+                <%= link_to '削除する', admin_tag_path(@tag.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger"%>
+              </div>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
