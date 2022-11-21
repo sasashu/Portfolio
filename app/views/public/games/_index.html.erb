@@ -1,6 +1,6 @@
 <div>
   <% @games.each do |game| %>
-      <div class="card-header"><%= link_to game.title, game_path(game.id) %></div>
+      <div class="card-header"><b><%= link_to game.title, game_path(game.id) %></b></div>
       <div class="card-content">
         <div class="content average-score">
           <div class="star-rating card-text mb-2">
