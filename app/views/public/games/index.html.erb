@@ -4,7 +4,7 @@
       <%= render 'leftbar' %>
     </div>
     <div class="col-9">
-      <h4><strong>記事一覧全<%= @games.count %>件</strong></h4>
+      <h4><strong>記事一覧 <%= @games.count %>件表示(全<%= @total_games.count %>件)</strong></h4>
       <%= render 'index' %>
     </div>
   </div>

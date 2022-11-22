@@ -1,33 +1,27 @@
 <div class="container">
   <div class="row">
-    <div class="col-10">
+    <div class="col-10 ml-5">
       <h4><strong>レビュー履歴一覧</strong></h4>
-       <table class="table is-fullwidth has-text-centered">
-        <thead>
-          <tr>
-            <th>ゲームタイトル</th><th>タイトル</th><th>内容</th><th>点数</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @reviews.each do |review| %>
-            <tr>
-                 <!--ゲームのタイトル-->
-              <td><%= link_to review.game.title, game_path(review.game) %></td>
-              <td><%= review.review_title %></td>
-              <td><%= review.review_comment %></td>
-                 <!--レビューの星-->
-              <td class="star">
-                <!--rateの得点の数だけfor文で★を表示-->
-                <% if review.rate? %>
-                  <% for i in 1..review.rate do %>
-                    ★
-                  <% end %>
+        <% @reviews.each do |review| %>
+          <div class="card-header"><b><%= link_to review.game.title, game_path(review.game) %></b></div>
+          <div class="card-content mb-3">
+            <div class="star card-text ml-3 my-1">
+              <!--rateの得点の数だけfor文で★を表示-->
+              <% if review.rate? %>
+                <% for i in 1..review.rate do %>
+                  ★
                 <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+              <% end %>
+            </div>
+            <div class="card-text ml-3">
+              <h6 class="card-title">レビュータイトル:</h6>
+              <p><strong><%= review.review_title %></strong></p>
+              <h6 class="card-title">コメント:</h6>
+              <p><strong><%= safe_join(review.review_comment.split("\n"),tag(:br)) %></strong></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

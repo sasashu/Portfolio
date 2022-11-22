@@ -13,7 +13,7 @@
           <% end %>
         </div>
         <div class="col-7">
-          <%= @game.item_caption %>
+          <%= safe_join(@game.item_caption.split("\n"),tag(:br)) %>
         </div>
       </div>
 
@@ -58,8 +58,8 @@
           <%= review.user.name %>
         </div>
         <div class="card-body">
-          <h5 class="card-title"><%= review.review_title %></h5>
-          <p class="card-text"><%= review.review_comment %></p>
+          <h5 class="card-title"><strong><%= review.review_title %></strong></h5>
+          <p class="card-text"><%= safe_join(review.review_comment.split("\n"),tag(:br)) %></p>
           <span class="star">
           <!--rateの得点の数だけfor文で★を表示-->
             <% if review.rate? %>
@@ -85,7 +85,7 @@
           <%= comment.user.name %>
         </div>
         <div class="card-body">
-          <p class="card-text"><%= comment.comment %></p>
+          <p class="card-text"><%= safe_join(comment.comment.split("\n"),tag(:br)) %></p>
           <div class="card-text text-right">
             <% if user_signed_in? && current_user.id == comment.user_id %>
               <%= link_to '削除', review_comment_path(review.id,comment.id), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
