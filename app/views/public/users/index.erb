@@ -1,29 +1,41 @@
 <div class="container">
   <div class="row">
-    <div class="col-10">
-      <h4><strong>マイページ</strong></h4>
-      <table>
-        <tr>
-          <td>会員ID</td>
-          <td><%= @user.id %></td>
-        </tr>
-        <tr>
-          <td>氏名</td>
-          <td><%= @user.name %></td>
-        </tr>
-        <tr>
-          <td>メールアドレス</td>
-          <td><%= @user.email %></td>
-        </tr>
-      </table>
-      <table>
-        <tr>
-          <td><%= link_to 'レビュー履歴一覧', history_path, class: 'btn btn-outline-warning' %></td>
+    <div class="col-6 my-5 ml-5">
+      <div class="card text">
+        <div class="card-header"><h4><strong><%= @user.name %>さんのマイページ</strong><h4></div>
+        <div class="card-body">
+          <table class="my-3">
+            <tr>
+              <td>会員ID</td>
+              <td>: <%= @user.id %></td>
+            </tr>
+            <tr>
+              <td>氏名</td>
+              <td>: <%= @user.name %></td>
+            </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td>: <%= @user.email %></td>
+            </tr>
+            <tr>
+              <td>会員ステータス</td>
+              <td>
+                :<% if @user.is_active == true %>
+                  <b class="text-success text-center">有効</b>
+                <% else %>
+                  <b class="text-secondary">退会</b>
+                <% end %>
+              </td>
+            </tr>
+          </table>
+          <div class="card-text text-right">
+          <%= link_to 'レビュー履歴一覧', history_path, class: 'btn btn-outline-primary' %>
           <% if @user.name != "guestuser" %>
-            <td><%= link_to '編集する', edit_infomation_path, class: 'btn btn-success' %></td>
+            <%= link_to '編集する', edit_infomation_path, class: 'btn btn-success' %>
           <% end %>
-        </tr>
-      </table>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

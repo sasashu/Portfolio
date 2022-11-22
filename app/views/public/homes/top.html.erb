@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 my-5 h4 justify-content-md-center text-center">
-      <p>
-        レビューゲームズへようこそ！<br>
-        このサイトはゲームをレビューし、感想を共有するサイトです。<br>
-        会員登録をしなくても閲覧は可能ですが、<br>
-        登録をする事でレビューやコメントをする事ができます！
-      </p>
-      <p><%= link_to '記事一覧を見る', games_path, class: 'btn btn-outline-primary' %></p>
+      <div class="card border-dark">
+        <h3 class="py-3"><strong>レビューゲームズへようこそ！</strong></h3>
+          <p class="py-2">このサイトはゲームをレビューし、感想を共有するサイトです。</p>
+          <p class="py-2">会員登録をしなくても閲覧は可能ですが、</p>
+          <p class="py-2">登録をする事でレビューやコメントをする事ができます！</p>
+        <p><%= link_to '記事一覧を見る', games_path, class: 'btn btn-lg btn-primary' %></p>
+      </div>
     </div>
   </div>
 </div>

@@ -1,10 +1,17 @@
-<h4><strong>本当に退会しますか？</strong></h4>
-      <p>退会すると会員情報の確認や、
-        レビュー履歴の閲覧が出来なくなります。<br>
-        退会する場合は「退会する」をクリックしてください。<br>
-        復元したい際は、管理者にお問合せください。
-      </p>
-
-      <%= link_to "マイページに戻る", my_page_path, class:"btn btn-primary" %>
-      <%= link_to "退会する", withdraw_path, method: :patch, data: { confirm: '本当に退会しますか？' }, class:"btn btn-danger" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 my-5 h4 justify-content-md-center text-center">
+      <div class="card border-dark">
+        <h3 class="py-3"><strong>本当に退会しますか？</strong></h3>
+        <p class="py-2">退会すると会員情報の確認や、</p>
+        <p class="py-2">レビュー履歴の閲覧が出来なくなります。</p>
+        <p class="py-2">退会する場合は「退会する」をクリックしてください。</p>
+                <!--復元したい際は、管理者にお問合せください。-->
+        <p>
+          <%= link_to "マイページに戻る", my_page_path, class:"btn btn-primary" %>
+          <%= link_to "退会する", withdraw_path, method: :patch, data: { confirm: '本当に退会しますか？' }, class:"btn btn-danger" %>
+        </p>
+      </div>
     </div>
+  </div>
+</div>
