@@ -36,7 +36,7 @@
 
 
       <!--style="width: @game.review_score_percentage %で星を割合で表示している。-->
-      <div class="card-content">
+      <div class="card-content mb-3">
         <div class="content average-score">
           <div class="star-rating mb-2">
             <div class="star-rating-front" style="width: <%= @game.review_score_percentage %>%">★★★★★</div>
@@ -45,9 +45,6 @@
           <div class="average-score-display ml-3 pt-2">
             <%= @game.avg_score %>点（<%= @game.reviews.count %>件のレビュー）
           </div>
-        </div>
-        <div class="text-right mr-4 mb-2">
-          <%= render 'public/reviews/form', review: @review, game: @game %>
         </div>
 
       </div>
@@ -79,7 +76,7 @@
           </div>
         </div>
       </div>
-      <div class="card w-75 border-primary mb-4" style="margin-left: 25%;">
+      <div class="card w-75 border-primary mb-4" style="margin-left: 10%;">
         <% review.comments.each do |comment| %>
         <div class="card-header border-primary">
           <%= comment.user.name %>
@@ -99,6 +96,9 @@
       </div>
     </div>
     <% end %>
+    </div>
+    <div class="my-2">
+      <%= render 'public/reviews/form', review: @review, game: @game %>
     </div>
   </div>
 </div>
