@@ -32,9 +32,9 @@ class Admin::GamesController < ApplicationController
   #     end
   # end
 
-  # def edit
-  #   @game = Game.find(params[:id])
-  # end
+  def edit
+    @game = Game.find(params[:id])
+  end
 
   def create
     @game = Game.new(game_params)
