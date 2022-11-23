@@ -4,8 +4,13 @@ class Game < ApplicationRecord
   has_many :tags, through: :game_tags, dependent: :destroy
 
   validates :title, presence: true
-  # validates :introduction, presence: true
-  # validates :release, presence: true
+  validates :item_caption, presence: true
+  validates :sales_date, presence: true
+  validates :label, presence: true
+  validates :jan, presence: true
+  validates :item_url, presence: true
+  validates :image_url, presence: true
+
 
 # 星の中身が空では無かったら返す
 # round(1)で小数点第一位まで表示

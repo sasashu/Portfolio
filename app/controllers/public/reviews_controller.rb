@@ -11,7 +11,6 @@ class Public::ReviewsController < ApplicationController
       @game = Game.find(params[:game_id])
       @reviews = @game.reviews
       render "public/games/show"
-      # redirect_to request.referrer
     end
   end
 

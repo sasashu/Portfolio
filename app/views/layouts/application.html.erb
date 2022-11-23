@@ -14,8 +14,8 @@
   <body>
     <%= render 'layouts/header' %>
     <main>
-     <p class="ml-5 text-success"><%= flash[:notice] %></p>
-     <p class="ml-5 text-danger"><%= flash[:alert] %></p>
+     <div class="ml-5 pl-5 text-success" style="margin-right:200px;"><%= flash[:notice] %></div>
+     <p class="ml-5 pl-5 text-danger"><%= flash[:alert] %></p>
       <%= yield %>
     </main>
   </body>

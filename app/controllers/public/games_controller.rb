@@ -1,4 +1,5 @@
 class Public::GamesController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
   before_action :set_game, only: [:edit, :update, :destroy]
 
   def index
@@ -36,7 +37,6 @@ class Public::GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @review = Review.new
-    # @game = Game.find(params[:game_id])
     @reviews = @game.reviews
   end
 

@@ -10,7 +10,6 @@ Admin.create!(
    password: ENV['DB_ADMIN_PASSWORD']
 )
 Tag.create([
-  { name: 'PC' },
   { name: 'PS4/PS5' },
   { name: 'Switch' },
   { name: '携帯ゲーム' },

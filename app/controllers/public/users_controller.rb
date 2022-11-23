@@ -8,8 +8,6 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = current_user
-    # @user = Review.find_by(id: params[:id]).user
-    # @game = Review.find(params[:id])
     @reviews = @user.reviews
   end
 
