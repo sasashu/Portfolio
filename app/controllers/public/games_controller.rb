@@ -1,5 +1,5 @@
 class Public::GamesController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_game, only: [:edit, :update, :destroy]
 
   def index
@@ -40,20 +40,6 @@ class Public::GamesController < ApplicationController
     @reviews = @game.reviews
   end
 
-  def pc
-  end
-
-  def ps
-  end
-
-  def switch
-  end
-
-  def portable
-  end
-
-  def other
-  end
 
   private
 

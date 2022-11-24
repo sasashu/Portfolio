@@ -22,13 +22,6 @@ Rails.application.routes.draw do
     get 'users/confirm', as: 'confirm'
     patch 'users/withdraw', as: 'withdraw'
 
-
-    get 'games/pc', as: 'pc'
-    get 'games/ps', as: 'ps'
-    get 'games/switch', as: 'switch'
-    get 'games/portable', as: 'portable'
-    get 'games/other', as: 'other'
-
     resources :games, only:[:index, :show] do
       resources :reviews, only:[:create, :destroy]
       collection do

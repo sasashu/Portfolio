@@ -1,37 +1,6 @@
 class Admin::GamesController < ApplicationController
   before_action :authenticate_admin!
 
-  # def index
-  # end
-
-  # def new
-  # end
-
-  # def show
-  #   results = RakutenWebService::Books::Game.search({
-  #   jan: params[:game][:title],
-  #   })
-
-  #   if Game.exists?(title: params[:game][:title])
-  #     @game = Game.find_by(title: params[:game][:title])
-  #   else
-  # #この部分で「@books」にAPIからの取得したJSONデータを格納していきます。
-  # #read(result)については、privateメソッドとして、設定しております。
-  #   #下位置
-  #     @game = Game.new(game_params)
-
-  #     # @game.introduction = "仮の説明です"
-  #     # @game.release = Date.today
-  #     @game.save
-  #   end
-  #     @games = []
-  #     results.each do |result|
-  #   #下位置
-  #     game = Game.new(read(result))
-  #     @games << game  #<<何？ハッシュを取り出す
-  #     end
-  # end
-
   def edit
     @game = Game.find(params[:id])
   end
@@ -82,14 +51,6 @@ class Admin::GamesController < ApplicationController
     end
   end
   
-  # def create
-  #   result = RakutenWebService::Books::Game.search({
-  #   jan: params[:jan],
-  #   })
-  #   Game.find_or_create_by!(read(result.response.as_json[0]["params"]))
-  #   redirect_to request.referer
-  #       render :request.referer
-  # end
 
   private
 #「楽天APIのデータから必要なデータを絞り込む」、且つ「対応するカラムにデータを格納する」メソッドを設定していきます。
