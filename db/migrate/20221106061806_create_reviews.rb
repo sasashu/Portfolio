@@ -13,3 +13,5 @@ class CreateReviews < ActiveRecord::Migration[6.1]
     end
   end
 end
+
+# コメントに情報を送るためにt.integer :review_idを追加で作成しました。
