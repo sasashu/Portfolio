@@ -49,7 +49,7 @@
       
       <% @reviews.each do |review| %>
         <div>
-          <div class="card w-75 border-success mb-2">
+          <div class="card w-75 border-success my-3">
             <div class="card-header border-success">
               <%= review.user.name %>
             </div>
@@ -75,25 +75,24 @@
               </div>
             </div>
           </div>
-          
-          <div class="card w-75 border-primary mb-4" style="margin-left: 15%;">
-            <% review.comments.each do |comment| %>
-            <div class="card-header border-primary">
-              <%= comment.user.name %>
-            </div>
-            <div class="card-body">
-              <p class="card-text"><%= safe_join(comment.comment.split("\n"),tag(:br)) %></p>
-              <div class="card-text text-right">
-                <% if user_signed_in? && current_user.id == comment.user_id %>
-                  <%= link_to '削除', review_comment_path(review.id,comment.id), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
-                <% end %>
-                <% if admin_signed_in? %>
-                  <%= link_to '削除', admin_comment_path(comment), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
-                <% end %>
+          <% review.comments.each do |comment| %>
+            <div class="card w-75 border-primary mb-2" style="margin-left: 15%;">
+              <div class="card-header border-primary">
+                <%= comment.user.name %>
+              </div>
+              <div class="card-body">
+                <p class="card-text"><%= safe_join(comment.comment.split("\n"),tag(:br)) %></p>
+                <div class="card-text text-right">
+                  <% if user_signed_in? && current_user.id == comment.user_id %>
+                    <%= link_to '削除', review_comment_path(review.id,comment.id), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
+                  <% end %>
+                  <% if admin_signed_in? %>
+                    <%= link_to '削除', admin_comment_path(comment), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
+                  <% end %>
+                </div>
               </div>
             </div>
-            <% end %>
-          </div>
+          <% end %>
         </div>
       <% end %>
       <div class="my-2">
