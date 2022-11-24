@@ -1,24 +1,24 @@
   <header class="shadow-sm">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="col-3">
-        <%= link_to root_path,class: 'nav-link text-dark' do %>
-          <font size="5">
-            <span>ReviewGames</span><i class="fa-solid fa-gamepad"></i>
-          </font>
-        <% end %>
+        <div class="navbar-brand col-3">
+          <%= link_to root_path,class: 'nav-link text-dark' do %>
+            <font size="5">
+              <span>ReviewGames</span><i class="fa-solid fa-gamepad"></i>
+            </font>
+          <% end %>
         <!--会員がログインしているとき-->
           <% if user_signed_in? %>
             <div class="text-center">
-              ようこそ、<%= current_user.name %>さん!
+              <font size="4">ようこそ、<%= current_user.name %>さん! </font>
             </div>
           <% end %>
         </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="col-sm-9">
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <div class="collapse navbar-collapse flex-column" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <!--会員がログインしているとき-->
               <% if user_signed_in? %>
@@ -71,13 +71,13 @@
                 </li>
               <% end %>
             </ul>
-          </div>
-          <div class="text-right">
-            <%= form_with url: search_games_path, method: :get, local: true do |f| %>
-            <%= f.text_field :q, placeholder: "記事タイトルを検索", value: "" %>
-            <%= f.submit "検索", name: nil, class: "btn btn-sm btn-success" %>
-            <i class="fa fa-search"></i>
-          <% end %>
+            <div class="navbar-nav ml-auto">
+              <%= form_with url: search_games_path, method: :get, local: true do |f| %>
+              <%= f.text_field :q, placeholder: "記事タイトルを検索", value: "" %>
+              <%= f.submit "検索", name: nil, class: "btn btn-sm btn-success" %>
+              <i class="fa fa-search"></i>
+            <% end %>
+            </div>
           </div>
         </div>
       </div>
