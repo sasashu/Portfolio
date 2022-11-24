@@ -22,16 +22,15 @@
         [<%= tag.name %>]
       <% end %>
       <div class="text-right mr-4 mb-2">
-      <span><%= @game.label %></span> |
-      <span><%= @game.sales_date %></span>
+        <span><%= @game.label %></span> |
+        <span><%= @game.sales_date %></span>
       </div>
 
       <% if admin_signed_in? %>
-            <div class="text-center mr-4 mb-2">
-        <%= link_to '記事を削除', admin_game_path, class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
-        <%= link_to '記事を編集', edit_admin_game_path(@game), class: 'btn btn-outline-success' %>
-              </div>
-
+        <div class="text-center mr-4 mb-2">
+          <%= link_to '記事を削除', admin_game_path, class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
+          <%= link_to '記事を編集', edit_admin_game_path(@game), class: 'btn btn-outline-success' %>
+        </div>
       <% end %>
 
 
@@ -47,59 +46,59 @@
             <%= @game.avg_score %>点（<%= @game.reviews.count %>件のレビュー）
           </div>
         </div>
-
       </div>
+      
       <div>
-      <% @reviews.each do |review| %>
-      <div class="card w-75 border-success mb-2">
-        <div class="card-header border-success">
-          <%= review.user.name %>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title"><strong><%= review.review_title %></strong></h5>
-          <p class="card-text"><%= safe_join(review.review_comment.split("\n"),tag(:br)) %></p>
-          <span class="star">
-          <!--rateの得点の数だけfor文で★を表示-->
-            <% if review.rate? %>
-              <% for i in 1..review.rate do %>
-                ★
+        <% @reviews.each do |review| %>
+        <div class="card w-75 border-success mb-2">
+          <div class="card-header border-success">
+            <%= review.user.name %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><strong><%= review.review_title %></strong></h5>
+            <p class="card-text"><%= safe_join(review.review_comment.split("\n"),tag(:br)) %></p>
+            <span class="star">
+            <!--rateの得点の数だけfor文で★を表示-->
+              <% if review.rate? %>
+                <% for i in 1..review.rate do %>
+                  ★
+                <% end %>
               <% end %>
-            <% end %>
-          </span>
-          <div class="card-text text-right">
-            <% if user_signed_in? && current_user.id == review.user_id %>
-              <%= link_to '削除', game_review_path(@game,review.id), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
-            <% end %>
-            <% if admin_signed_in? %>
-              <%= link_to 'レビューを削除', admin_review_path(review), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
-            <% end %>
-            <%= link_to 'コメントを書く', new_review_comment_path(review.id), class: 'btn btn-outline-success' %>
+            </span>
+            <div class="card-text text-right">
+              <% if user_signed_in? && current_user.id == review.user_id %>
+                <%= link_to '削除', game_review_path(@game,review.id), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
+              <% end %>
+              <% if admin_signed_in? %>
+                <%= link_to 'レビューを削除', admin_review_path(review), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
+              <% end %>
+              <%= link_to 'コメントを書く', new_review_comment_path(review.id), class: 'btn btn-outline-success' %>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="card w-75 border-primary mb-4" style="margin-left: 10%;">
-        <% review.comments.each do |comment| %>
-        <div class="card-header border-primary">
-          <%= comment.user.name %>
-        </div>
-        <div class="card-body">
-          <p class="card-text"><%= safe_join(comment.comment.split("\n"),tag(:br)) %></p>
-          <div class="card-text text-right">
-            <% if user_signed_in? && current_user.id == comment.user_id %>
-              <%= link_to '削除', review_comment_path(review.id,comment.id), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
-            <% end %>
-            <% if admin_signed_in? %>
-              <%= link_to '削除', admin_comment_path(comment), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
-            <% end %>
+        <div class="card w-75 border-primary mb-4" style="margin-left: 10%;">
+          <% review.comments.each do |comment| %>
+          <div class="card-header border-primary">
+            <%= comment.user.name %>
           </div>
+          <div class="card-body">
+            <p class="card-text"><%= safe_join(comment.comment.split("\n"),tag(:br)) %></p>
+            <div class="card-text text-right">
+              <% if user_signed_in? && current_user.id == comment.user_id %>
+                <%= link_to '削除', review_comment_path(review.id,comment.id), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
+              <% end %>
+              <% if admin_signed_in? %>
+                <%= link_to '削除', admin_comment_path(comment), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
         </div>
-        <% end %>
       </div>
-    </div>
-    <% end %>
-    <div class="my-2">
-      <%= render 'public/reviews/form', review: @review, game: @game %>
-    </div>
+      <% end %>
+      <div class="my-2">
+        <%= render 'public/reviews/form', review: @review, game: @game %>
+      </div>
     </div>
   </div>
 </div>
