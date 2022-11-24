@@ -1,14 +1,14 @@
 <div class="sticky mt-5">
   <div class="card text-center my-3">
     <div class="card-header">表示順</div>
-      <div class="card-body">
-        <%= link_to "新着順", games_path(sort: 'date_DESC') %> |
-        <%= link_to "古い順", games_path(sort: 'date_ASC') %><br>
-        <%= link_to "評価の高い順", games_path(sort: 'rate') %><br>
-        <%= link_to "発売日順", games_path(sort: 'sales_DESC') %>
-      </div>
+    <div class="card-body">
+      <%= link_to "新着順", games_path(sort: 'date_DESC') %> |
+      <%= link_to "古い順", games_path(sort: 'date_ASC') %><br>
+      <%= link_to "評価の高い順", games_path(sort: 'rate') %><br>
+      <%= link_to "発売日順", games_path(sort: 'sales_DESC') %>
+    </div>
   </div>
-  <div class="my-3">
+  <div class="my-3 text-right">
     <%= form_tag games_path, method: :get, class: 'boards__searchForm' do %>
       <%= hidden_field_tag :sort, params[:sort] %>
       <%= select_tag :tag_id,options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
@@ -19,13 +19,11 @@
       %>
     <% end %>
   </div>
-  <div class="mt-5">
+  <div class="mt-5 text-right">
     <%= form_with url: search_games_path, method: :get, local: true do |f| %>
-    <%= f.text_field :q, placeholder: "記事タイトルを検索", value: "" ,size: "16px" %>
-    <div class="text-right">
+      <%= f.text_field :q, placeholder: "記事タイトルを検索", value: "" ,size: "16px" %>
       <%= f.submit "検索", name: nil, class: 'btn btn-sm btn-success' %>
       <i class="fa fa-search"></i>
-    </div>
     <% end %>
   </div>
 </div>
