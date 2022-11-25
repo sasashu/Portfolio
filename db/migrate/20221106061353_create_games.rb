@@ -14,7 +14,3 @@ class CreateGames < ActiveRecord::Migration[6.1]
     end
   end
 end
-
-# テストの為, null: falseは外している
-    # create_table :games, id: false do |t|
-    # t.string :jan, null: false, primary_key: true
