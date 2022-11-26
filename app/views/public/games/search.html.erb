@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-2">
+    <div class="col-lg-2">
       <%= render 'leftbar' %>
     </div>
-    <div class="col-9">
+    <div class="col-12 col-lg-9">
       <h4><strong>検索結果一覧 全<%= @search_games.count %>件</strong></h4>
       <div>
         <% @search_games.each do |game| %>
