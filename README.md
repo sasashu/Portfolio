@@ -39,4 +39,4 @@ https://docs.google.com/spreadsheets/d/1nbbjcQfFgWi_MHl4oTvyPFkuFMd3uKvaqlNX9Pg0
 ## 使用素材
 <!--- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。-->
 <!--  画像やキャラクターは不使用の方向-->
-- 使用検討中です。
+- FontAwesome :https://fontawesome.com/
