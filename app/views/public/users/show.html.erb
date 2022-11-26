@@ -3,7 +3,8 @@
     <div class="col-10 ml-5">
       <h4><strong>レビュー履歴一覧</strong></h4>
         <% @reviews.each do |review| %>
-          <div class="card-header"><b><%= link_to review.game.title, game_path(review.game) %></b></div>
+          <!--data: {"turbolinks"=>false}で記事詳細ページのみturbolinksを切ることで、星の動作をリロードを挟まなくていいようにしている-->
+          <div class="card-header"><b><%= link_to review.game.title, game_path(review.game),data: {"turbolinks"=>false} %></b></div>
           <div class="card-content mb-3">
             <div class="star card-text ml-3 my-1">
               <!--rateの得点の数だけfor文で★を表示-->

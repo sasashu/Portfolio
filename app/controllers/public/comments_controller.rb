@@ -4,19 +4,13 @@ class Public::CommentsController < ApplicationController
   def new
     @comment = Comment.new
     @review_id = params[:review_id]
-    # @comment = current_user.comments.new(comment_params)
-    # @game = Game.find(params[:id])
-    # @user = current_user
     @review = Review.find(params[:review_id])
-    # session[:previous_url] = request.referer
   end
 
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
-    # @review = Review.find(params[:id])
     @review = Review.find(comment_params[:review_id])
-    # @game = review.game
     if @comment.save
       redirect_to game_path(@review.game), notice: "登録が完了しました。"
     else

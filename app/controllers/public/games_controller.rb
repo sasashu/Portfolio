@@ -1,6 +1,5 @@
 class Public::GamesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_game, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show, :search]
 
   def index
     # 同条件の多分岐なのでif文よりcase文の方がシンプルに記述できる

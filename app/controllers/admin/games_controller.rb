@@ -26,7 +26,7 @@ class Admin::GamesController < ApplicationController
   def destroy
     @game = Game.find(params[:id])
     @game.destroy
-    redirect_to games_path, alert: "削除されました。"
+    redirect_to games_path, notice: "削除されました。"
   end
 
   def new
@@ -50,7 +50,7 @@ class Admin::GamesController < ApplicationController
       end
     end
   end
-  
+
 
   private
 #「楽天APIのデータから必要なデータを絞り込む」、且つ「対応するカラムにデータを格納する」メソッドを設定していきます。

@@ -7,7 +7,7 @@
       <h4><strong>検索結果一覧 全<%= @search_games.count %>件</strong></h4>
       <div>
         <% @search_games.each do |game| %>
-      <div class="card-header"><b><%= link_to game.title, game_path(game.id) %></b></div>
+      <div class="card-header"><b><%= link_to game.title, game_path(game.id),data: {"turbolinks"=>false} %></b></div>
       <div class="card-content">
         <div class="content average-score">
           <div class="star-rating card-text mb-2">

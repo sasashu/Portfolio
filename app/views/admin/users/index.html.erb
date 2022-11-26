@@ -20,11 +20,11 @@
                 <% end %>
               </td>
               <td><%= user.email %></td>
-                <% if user.is_active == true %>
-                  <td class="text-success">有効</td>
-                <% else %>
-                  <td class="text-secondary">退会</td>
-                <% end %>
+              <% if user.is_active == true %>
+                <td class="text-success">有効</td>
+              <% else %>
+                <td class="text-secondary">退会</td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>
