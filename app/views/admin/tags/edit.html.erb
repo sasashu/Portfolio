@@ -11,8 +11,8 @@
                 <%= f.text_field :name, placeholder: "編集するタグ名を入力", class: 'form-control' %>
               </p>
               <div class="card-text text-right">
-                <%= f.submit '変更を保存',class: 'btn btn-success' %>
                 <%= link_to '削除する', admin_tag_path(@tag.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger"%>
+                <%= f.submit '変更を保存',class: 'btn btn-success' %>
               </div>
             </div>
           <% end %>
