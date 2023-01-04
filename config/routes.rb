@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   scope module: :public do
     get 'users/my_page' =>'users#index', as: 'my_page'
     get 'users/history' =>'users#show', as: 'history'
-    get 'users/infomation/edit' =>'users#edit', as: 'edit_infomation'
-    patch 'users/infomation' =>'users#update', as: 'infomation'
+    get 'users/information/edit' =>'users#edit', as: 'edit_information'
+    patch 'users/information' =>'users#update', as: 'information'
     get 'users/confirm', as: 'confirm'
     patch 'users/withdraw', as: 'withdraw'
 

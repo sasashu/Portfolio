@@ -3,7 +3,7 @@
     <div class="col-6 my-5 ml-5">
       <div class="card text">
         <%= render "public/shared/error_messages", resource: @user %>
-        <%= form_with model: @user, url: infomation_path(@user.id) do |f| %>
+        <%= form_with model: @user, url: information_path(@user.id) do |f| %>
           <div class="card-header"><h4><strong><%= @user.name %>さんの会員情報編集</strong><h4></div>
           <div class="card-body">
             <table class="my-3">
