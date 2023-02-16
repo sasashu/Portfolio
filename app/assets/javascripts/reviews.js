@@ -1,6 +1,5 @@
 // class = "ratings"の子要素を取得
 const stars = document.querySelector(".ratings").children;
-// const stars = document.getElementsByClassName("ratings").children;
 // id = "rating-value"の要素を取得
 const ratingValue = document.getElementById("rating-value");
 // id = "rating-value-display"の要素を取得
@@ -10,20 +9,17 @@ let index;
 
 // reveiwの投稿ページに遷移するとstars.lengthの値（5）だけ繰り返し
 for(let i=0; i<stars.length; i++){
-	console.log(stars.length)
 	// 星にカーソルが乗ったときに実行する関数を定義
 	stars[i].addEventListener("mouseover",function(){
 		// stars.lengthの値（5）だけ繰り返し
 		// つまり、星カーソルが乗った時、5回繰り返される
 		for(let j=0; j<stars.length; j++){
-			console.log(stars.length)
 			// まず全て星をくり抜く
 			stars[j].classList.remove("fa-solid");
 			stars[j].classList.add("fa-regular");
 		}
 		// そのあと星の数だけ以下の関数が繰り返される。
 		for(let j=0; j<=i; j++){
-			console.log(stars.length)
 			stars[j].classList.remove("fa-regular");
 			// カーソルが乗った星まで星を塗りつぶす
 			stars[j].classList.add("fa-solid");
