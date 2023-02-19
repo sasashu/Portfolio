@@ -55,21 +55,14 @@ class Admin::GamesController < ApplicationController
   private
 #「楽天APIのデータから必要なデータを絞り込む」、且つ「対応するカラムにデータを格納する」メソッドを設定していきます。
   def read(result)
-    title = result["title"]
-    label = result["label"]
-    sales_date = result["salesDate"]
-    item_url = result["itemUrl"]
-    jan = result["jan"]
-    image_url = result["mediumImageUrl"].gsub('?_ex=120x120', '')
-    item_caption = result["itemCaption"]
     {
-    title: title,
-    label: label,
-    sales_date: sales_date,
-    item_url: item_url,
-    jan: jan,
-    image_url: image_url,
-    item_caption: item_caption
+    title: result["title"],
+    label: result["label"],
+    sales_date: result["salesDate"],
+    item_url: result["item_url"],
+    jan: result["jan"],
+    image_url: result["mediumImageUrl"].gsub('?_ex=120x120', ''),
+    item_caption: result["item_caption"]
     }
   end
 
