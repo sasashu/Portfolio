@@ -73,7 +73,7 @@
             </ul>
             <div class="navbar-nav ml-auto">
               <%= form_with url: search_games_path, method: :get, local: true do |f| %>
-              <%= f.text_field :q, placeholder: "記事タイトルを検索", value: "" %>
+              <%= f.text_field :q, placeholder: "記事タイトルを検索", value: "", required: true %>
               <%= f.submit "検索", name: nil, class: "btn btn-sm btn-success" %>
               <i class="fa fa-search"></i>
             <% end %>
