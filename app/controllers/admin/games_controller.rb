@@ -1,8 +1,8 @@
 class Admin::GamesController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_admin_game, only: [:edit, :update, :destroy]
 
   def edit
-    @game = Game.find(params[:id])
   end
 
   def create
@@ -15,7 +15,6 @@ class Admin::GamesController < ApplicationController
   end
 
   def update
-    @game = Game.find(params[:id])
     if @game.update(game_params)
       redirect_to game_path(@game.id), notice: "変更が保存されました。"
     else
@@ -24,7 +23,6 @@ class Admin::GamesController < ApplicationController
   end
 
   def destroy
-    @game = Game.find(params[:id])
     @game.destroy
     redirect_to games_path, notice: "削除されました。"
   end
@@ -65,6 +63,11 @@ class Admin::GamesController < ApplicationController
     item_caption: result["item_caption"]
     }
   end
+
+  def set_admin_game
+    @game = Game.find(params[:id])
+  end
+
 
   def game_params
     params.require(:game).permit(:title, :item_caption, :sales_date, :label, :jan, :item_url, :image_url, tag_ids: [])
