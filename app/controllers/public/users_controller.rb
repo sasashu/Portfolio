@@ -1,22 +1,19 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
+  before_action :set_public_user
 
   def index
-    @user = current_user
   end
 
   def show
-    @user = current_user
     @reviews = @user.reviews
   end
 
   def edit
-    @user = current_user
   end
 
   def update
-    @user = current_user
     if @user.update(user_params)
       redirect_to my_page_path, notice: "変更が保存されました。"
     else
@@ -25,7 +22,6 @@ class Public::UsersController < ApplicationController
   end
 
   def withdraw
-    @user = current_user
     @user.update(is_active: false)
     reset_session
     redirect_to root_path, notice: "正常に退会が行われました。"
@@ -42,6 +38,10 @@ class Public::UsersController < ApplicationController
     if @user.name == "guestuser"
       redirect_to my_page_path, alert: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
+  end
+
+  def set_public_user
+    @user = current_user
   end
 
 end
