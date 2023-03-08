@@ -3,15 +3,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only:[:index, :show, :edit, :update]
-
     resources :tags, only:[:index, :create, :edit, :update, :destroy]
-
     resources :games, only:[:new, :create, :edit, :update, :destroy]
-
     resources :reviews, only:[:destroy]
     resources :comments, only:[:destroy]
     get '/'=> 'homes#top'
-
   end
 
   scope module: :public do

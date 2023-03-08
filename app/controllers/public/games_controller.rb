@@ -43,6 +43,6 @@ class Public::GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:title,  tag_ids: [])
+    params.require(:game).permit(:title, tag_ids: [])
   end
 end
