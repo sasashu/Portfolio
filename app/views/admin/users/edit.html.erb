@@ -20,6 +20,7 @@
               </tr>
               <tr>
                 <td>会員ステータス</td>
+                <!--ボタンでtrueとfalseを切り替えることで論理削除を行なっている。-->
                 <td>
                   : <%= f.radio_button :is_active, :true %><%= f.label :is_active, "有効" %>
                   | <%= f.radio_button :is_active, :false %><%= f.label :is_active, "退会" %>

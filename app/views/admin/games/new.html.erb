@@ -18,6 +18,7 @@
             <div class="book_date">
               <!--表示させたい情報を記述-->
               <%= form_with model: @game,url: admin_games_path do |f| %>
+                <!--この記述でも同じく表示はできるが、サイズを指定できていないので切り分けて記述している。-->
                 <%#= link_to (image_tag(book.image_url)), book.item_url %>
                 <div>
                   <%= link_to book.item_url do %>

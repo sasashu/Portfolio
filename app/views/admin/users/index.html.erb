@@ -20,6 +20,7 @@
                 <% end %>
               </td>
               <td><%= user.email %></td>
+              <!--ifと==を用いてユーザーの会員ステータスがtrueなら有効を表記させるようにしている。-->
               <% if user.is_active == true %>
                 <td class="text-success">有効</td>
               <% else %>
