@@ -1,6 +1,7 @@
 <div class="sticky mt-5">
   <div class="card text-center my-3">
     <div class="card-header">表示順</div>
+    <!--sort:には記述のみの情報を送るようにすることで、controller内で処理を行えるようにしている。-->
     <div class="card-body">
       <%= link_to "新着順", games_path(sort: 'date_DESC') %> |
       <%= link_to "古い順", games_path(sort: 'date_ASC') %><br>
