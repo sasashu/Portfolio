@@ -12,7 +12,7 @@
             <%= image_tag @game.image_url, width: '100%', height: '100%' %>
           <% end %>
         </div>
-        <!--.split("\n"),tag(:br)で改行を表示させている-->
+        <!--.split("\n"),tag(:br)でレビューやコメント等の個人で入力する文章の改行を表示させている-->
         <div class="col-7">
           <%= safe_join(@game.item_caption.split("\n"),tag(:br)) %>
         </div>
@@ -46,7 +46,7 @@
           </div>
         </div>
       </div>
-      
+
       <% @reviews.each do |review| %>
         <div>
           <div class="card w-75 border-success my-3">

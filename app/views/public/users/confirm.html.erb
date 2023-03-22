@@ -6,6 +6,7 @@
         <p class="py-2">退会すると会員情報の確認や、</p>
         <p class="py-2">レビュー履歴の閲覧が出来なくなります。</p>
         <p class="py-2">退会する場合は「退会する」をクリックしてください。</p>
+        <!--退会するをクリックすることで、会員ステータスをfalseに変更する処理を行い退会処理としている。-->
         <p>
           <%= link_to "マイページに戻る", my_page_path, class:"btn btn-primary" %>
           <%= link_to "退会する", withdraw_path, method: :patch, data: { confirm: '本当に退会しますか？' }, class:"btn btn-danger" %>
