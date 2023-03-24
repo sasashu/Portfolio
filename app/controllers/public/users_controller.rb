@@ -22,6 +22,7 @@ class Public::UsersController < ApplicationController
   end
 
   def withdraw
+    # 会員ステータスをtrueからfalseに切り替える処理を行い、退会処理としている。
     @user.update(is_active: false)
     reset_session
     redirect_to root_path, notice: "正常に退会が行われました。"
