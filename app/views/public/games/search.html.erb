@@ -7,7 +7,7 @@
       <h4><strong>検索結果一覧 全<%= @search_games.count %>件</strong></h4>
       <div>
         <% @search_games.each do |game| %>
-          <!--data: {"turbolinks"=>false}で記事詳細ページのみturbolinksを切ることで、星の動作をリロードを挟まなくていいようにしている-->
+          <!--data: {"turbolinks"=>false}で記事詳細ページのみturbolinksを切ることで、星の動作をリロードを挟まなくていいようにしている。-->
           <div class="card-header"><b><%= link_to game.title, game_path(game.id),data: {"turbolinks"=>false} %></b></div>
           <div class="card-content">
             <div class="content average-score">
