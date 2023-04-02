@@ -9,6 +9,7 @@
             <%= f.text_area :comment, rows: 4, class: 'form-control game_introduction', placeholder: "コメントを入力(最大200文字)" %>
         </div>
         <div class="text-center mt-3">
+          <!--コメントを投稿する為にhidden_fieldでコメントをするレビューIDの情報を送っている。-->
           <%= f.hidden_field :review_id, value: @review_id %>
           <%= link_to "記事に戻る", game_path(@review.game), class: 'btn btn-primary' %>
           <%= f.submit "コメントを投稿", class: 'btn btn-success' %>
