@@ -18,6 +18,7 @@
               <h6 class="card-title">レビュータイトル:</h6>
               <p><strong><%= review.review_title %></strong></p>
               <h6 class="card-title">コメント:</h6>
+              <!--.split("\n"),tag(:br)でレビューやコメント等の個人で入力する文章の改行を表示させている-->
               <p><strong><%= safe_join(review.review_comment.split("\n"),tag(:br)) %></strong></p>
             </div>
           </div>
