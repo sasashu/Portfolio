@@ -1,7 +1,7 @@
 class Public::CommentsController < ApplicationController
   before_action :authenticate_user!
 
-  # コメントに対するレビューのID情報を取得して投稿できるようにしている。
+  # コメントに紐付くレビューのID情報を取得して投稿できるようにしている。
   def new
     @comment = Comment.new
     @review_id = params[:review_id]
