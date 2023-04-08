@@ -22,6 +22,7 @@
     <p>タグ</p>
 
     <div class="row">
+      <!--collection_check_boxesを使用して登録していたタグを表示、チェックしたタグをそのまま設定できる。-->
       <%= collection_check_boxes(:game, :tag_ids, Tag.all, :id, :name) do |tag| %>
        <div class="col-sm-4 mb-3">
           <div class="card-text">
