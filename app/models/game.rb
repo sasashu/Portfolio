@@ -2,6 +2,7 @@ class Game < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :game_tags, dependent: :destroy
   has_many :tags, through: :game_tags, dependent: :destroy
+  # 結びついていない中間テーブルを繋ぐために双方にthroughを使用。
 
   validates :title, presence: true
   validates :item_caption, presence: true
