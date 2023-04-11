@@ -55,6 +55,7 @@
             </div>
             <div class="card-body">
               <h5 class="card-title"><strong><%= review.review_title %></strong></h5>
+              <!--.split("\n"),tag(:br)でレビューやコメント等の個人で入力する文章の改行を表示させている-->
               <p class="card-text"><%= safe_join(review.review_comment.split("\n"),tag(:br)) %></p>
               <span class="star">
               <!--rateの得点の数だけfor文で★を表示-->
