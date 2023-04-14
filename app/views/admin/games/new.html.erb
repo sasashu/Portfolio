@@ -31,7 +31,7 @@
                 <%= book.item_caption %>
                 <%= book.jan %>
 
-                <!--ここでその情報を送っている-->
+                <!--ここでその情報を送り、投稿でそのままDBに保存できる様にしている-->
                 <%= f.hidden_field :title,value: book.title %>
                 <%= f.hidden_field :item_caption,value: book.item_caption %>
                 <%= f.hidden_field :sales_date,value: book.sales_date %>

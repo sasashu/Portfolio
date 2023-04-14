@@ -66,6 +66,7 @@
                 <% end %>
               </span>
               <div class="card-text text-right">
+                <!--投稿者と管理者のログイン時は削除ボタンが表示される。-->
                 <% if user_signed_in? && current_user.id == review.user_id %>
                   <%= link_to '削除', game_review_path(@game,review.id), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
                 <% end %>
@@ -84,7 +85,6 @@
               <div class="card-body">
                 <p class="card-text"><%= safe_join(comment.comment.split("\n"),tag(:br)) %></p>
                 <div class="card-text text-right">
-                  <!--投稿者と管理者のログイン時は削除ボタンが表示される。-->
                   <% if user_signed_in? && current_user.id == comment.user_id %>
                     <%= link_to '削除', review_comment_path(review.id,comment.id), class: 'btn btn-outline-danger', method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
                   <% end %>
