@@ -19,6 +19,7 @@
             </tr>
             <tr>
               <td>会員ステータス</td>
+              <!--会員ステータスがtrueなら有効、falseであれば退会表示させている。-->
               <td>
                 :<% if @user.is_active == true %>
                   <b class="text-success text-center">有効</b>

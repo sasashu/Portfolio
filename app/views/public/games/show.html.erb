@@ -8,6 +8,7 @@
       <%= render "public/shared/error_messages", resource: @review %>
       <div class="row">
         <div class="col-5 d-flex align-items-center">
+          <!--楽天の商品URLに画像URLを乗せて表示している。クリックすると楽天の商品ページへ飛ぶ-->
           <%= link_to @game.item_url do %>
             <%= image_tag @game.image_url, width: '100%', height: '100%' %>
           <% end %>
