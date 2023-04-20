@@ -21,6 +21,7 @@
               <!--楽天の商品URLに画像URLを乗せて表示している。クリックすると楽天の商品ページへ飛ぶ-->
                 <!--この記述でも同じく表示はできるが、サイズを指定できていないので切り分けて記述している。-->
                 <%#= link_to (image_tag(book.image_url)), book.item_url %>
+                <!--book.◯◯ は楽天ブックスから欲しいデータを表示する為に使われている。-->
                 <div>
                   <%= link_to book.item_url do %>
                     <%= image_tag book.image_url, width: '30%', height: '30%' %>
