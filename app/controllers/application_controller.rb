@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-
+# 検索ページはransackを使用、kaminariで制限も行っている。
   def set_search
     @query = { title_cont: params[:q] }
     @search = Game.ransack(@query)

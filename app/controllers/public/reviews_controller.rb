@@ -8,6 +8,7 @@ class Public::ReviewsController < ApplicationController
     if @review.save
       redirect_to game_path(@review.game), notice: "レビューが投稿されました。"
     else
+      # 記事のレビュー情報を送ってからrenderしないと情報が不足しエラーが発生する。
       @game = Game.find(params[:game_id])
       @reviews = @game.reviews
       render "public/games/show"
