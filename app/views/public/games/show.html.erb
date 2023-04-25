@@ -19,6 +19,7 @@
         </div>
       </div>
 
+      <!--記事に設定されたタグを表示-->
       <% @game.tags.each do |tag| %>
         [<%= tag.name %>]
       <% end %>
@@ -59,7 +60,7 @@
               <!--.split("\n"),tag(:br)でレビューやコメント等の個人で入力する文章の改行を表示させている-->
               <p class="card-text"><%= safe_join(review.review_comment.split("\n"),tag(:br)) %></p>
               <span class="star">
-              <!--rateの得点の数だけfor文で★を表示-->
+              <!--rateの得点の数だけfor文で★を表示。3と入力されていれば★★★と表示される-->
                 <% if review.rate? %>
                   <% for i in 1..review.rate do %>
                     ★
